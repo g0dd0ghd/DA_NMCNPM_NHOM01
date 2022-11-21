@@ -192,9 +192,9 @@ body, #main
 #student-list .add-student-btn
 {
     background-color: red;
-    margin: 10px 0;
-    width: 135px;
-    padding: 8px;
+    margin: 15px 0;
+    width: 100px;
+    padding: 7px;
     text-align: center;
     border: 2px solid #000000;
     border-radius: 8px;
