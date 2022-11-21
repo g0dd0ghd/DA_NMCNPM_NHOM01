@@ -8,11 +8,6 @@
     --hover-color: #7FBCD2;
 }
 
-#main{
-    width:100%;
-    height: 100%;
-}
-
 .row
 {
     margin-top: 80px;
@@ -32,13 +27,14 @@
     box-sizing: border-box;
 }
 
-#body {
-    height: 100%;
-}
-
 html{
     scroll-behavior: smooth;
     font-family: var(--font-used);
+    height: 100%;
+}
+
+body, #main 
+{
     height: 100%;
 }
 
@@ -174,12 +170,23 @@ html{
 #student-list .select-class
 {
     display: inline-block;
-    margin: 10px;
+    margin: 10px 0;
 }
 
-#student-list .select-class .text-class
+.select-class .text-class
 {
     display: inline-block;
+    font-weight: bold;
+}
+.select-class .class
+{
+    display: inline-block;
+    min-width: 70px;
+    text-align-last: center;
+    font-weight: bold;
+    padding: 4px 10px;
+    border: 2px solid #000;
+    border-radius: 5px;
 }
 
 #student-list .add-student-btn
@@ -213,6 +220,12 @@ html{
 
 #student-list .student-tab{
     margin: 10px 0;
-    width:100%;    
+    width:100%;
+}
+
+#student-list table, th, td
+{
+    border: 1px solid black;
+    text-align: center;
 }
 
