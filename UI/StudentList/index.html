@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLHS</title>
+    <link rel="icon" href="../assets/img/logo-hcmus-new.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <ul id="nav">
+                <li>
+                    <a href="../MainLobby/">Trang chủ</a>
+                </li>
+                <li><a href="#">
+                    Lớp học
+                    <i class="nav-arrow-down ti-angle-down"></i>
+                </a>
+                    <ul class="subnav">
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="../StudentList/">Xem DS lớp</a></li>
+                        <li><a href="../InsertStudent/">Lập DS lớp</a></li>
+                    </ul>
+                </li>
+                <!-- <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li> -->
+            </ul>
+        <!-- End Navigation -->
+        <!-- Begin Search Button -->
+            <div id="avatar">
+                <i class="avatar-icon ti-user"></i>
+                <ul class="subnav">
+                    <li><a href="#">Thông tin</a></li>
+                    <li><a href="../LoginPage/">Đăng xuất</a></li>
+                </ul>
+            </div>
+            <!-- End Search Button -->
+        </div>
+       <div id="student-list">
+            <div class="title">
+                Danh sách học sinh
+            </div>
+            <div class="add-student-btn">
+                <a href="../InsertStudent/">Thêm học sinh</a>
+            </div>
+            <div class="select-class">
+                <p class="text-class">Chọn Lớp:</p>
+                    <select name="" id="" class="class">
+                        <option value="">1A</option>
+                        <option value="">1B</option>
+                    </select>
+            </div>
+            <table class="student-tab" border="1">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>MSHS</th>
+                        <th>Họ và Tên</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>Môn</th>
+                        <th>GPA</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2201001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>Nam</td>
+                        <td>1/1/2016</td>
+                        <td>Toán</td>
+                        <td>8.0</td>
+                        <td>0909090909</td>
+                        <td>Q1, TPHCM</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2201002</td>
+                        <td>Nguyễn Văn B</td>
+                        <td>Nam</td>
+                        <td>2/1/2016</td>
+                        <td>Toán</td>
+                        <td>8.0</td>
+                        <td>0909090908</td>
+                        <td>Q2, TPHCM</td>
+                    </tr>
+                </tbody>
+            </table>
+       </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,233 @@
+/* css common */
+:root
+{
+    --header-height: 46.5px;
+    --item-height: 31.5px;
+    --font-used: sans-serif;
+    --title-color: #1a237e;
+    --hover-color: #7FBCD2;
+}
+
+.row
+{
+    margin-top: 80px;
+}
+
+.col-half
+{
+    float: left;
+    width: 50%;
+}
+
+/* css main */
+* {
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    font-family: var(--font-used);
+}
+
+#header{
+    height: var(--header-height);
+    background: linear-gradient(to right, #00FFF6, #009EFF, #00FFF6);
+    font-weight: bold;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1;
+}
+
+#nav{
+    display:inline-block;
+}
+
+#nav li {
+    display:inline-block;
+    position:relative;
+}
+
+#nav li a{
+    display: inline-block;
+    margin: calc((var(--header-height) - var(--item-height))/2) 20px;
+    line-height: var(--item-height);
+    text-decoration: none;
+    color: var(--title-color);
+    padding: 0 10px;
+}
+
+#nav >li >a{
+    text-transform: uppercase;
+}
+
+#nav li:hover .subnav{
+    display:block;
+}
+
+#nav .subnav
+{
+    display:none;
+    position:absolute;
+    background-color: white;
+    box-shadow: 3px 3px 3px 0 rgba(0,0,0, 0.3);
+    text-align: center;
+    border-radius: 8px;
+    min-width: 101%;
+}
+
+
+#nav .subnav li{
+    width:100%;
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover,
+#avatar .subnav li:hover{
+    background: linear-gradient(to right, #009EFF, var(--hover-color));
+    border-radius: 8px;
+}
+
+#nav .subnav a {
+    margin: 0 20px;
+    color: var(--title-color);
+}
+
+#nav .nav-arrow-down {
+    font-size:12px;
+}
+
+#avatar{
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    right: 1%;
+}
+
+#avatar:hover .avatar-icon{
+    background: linear-gradient(to right, #009EFF, var(--hover-color));
+    border-radius: 45px;
+    cursor: pointer;
+}
+
+#avatar .avatar-icon{
+    display: inline-block;
+    margin: calc((var(--header-height) - var(--item-height))/2) 30px;
+    line-height: var(--item-height);
+    color:white;
+    padding: 0 25px;
+}
+
+#avatar .subnav{
+    display:none;
+    position:absolute;
+    background-color: white;
+    box-shadow: 3px 3px 3px 0 rgba(0,0,0, 0.3);
+    list-style: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#avatar .subnav a{
+    color: var(--title-color);
+    line-height: var(--item-height);
+    padding: 3px 24px;
+    text-decoration: none;
+}
+
+#avatar:hover .subnav{
+    display:block;
+}
+
+.button
+{
+    position: relative;
+    background-color: #ff0000;
+    color: white;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 20px;
+    cursor:pointer;
+}
+
+.add-student .back-btn
+{
+    margin-left: 20px;
+}
+
+.add-student .submit-btn
+{
+    margin: calc(50% - 40px);
+}
+
+.back-btn:hover, .submit-btn:hover
+{
+    background-color: #fa3636;
+}
+
+.back-btn:active, .submit-btn:active
+{
+    background-color: #cf0101;
+}
+
+.add-stu-info{
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
+
+.add-student .title
+{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: red;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.text
+{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.sex
+{
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    padding: 4px 20px;
+    border: 2px solid #ccc;
+    box-shadow: 3px 3px 3px 0 rgba(0,0,0, 0.3);
+    border-radius: 5px;
+}
+
+.form-control
+{
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 4px 20px;
+    min-width: 270px;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px 0 rgba(0,0,0, 0.3);
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    background-color: #cccccc;
+}
+
+.form-control:focus
+{
+    background-color: white;
+}
+
+@keyframes fadeLefttoRight
+{
+    
+}

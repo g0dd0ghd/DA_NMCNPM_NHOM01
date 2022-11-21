@@ -1,0 +1,94 @@
+html
+{
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: sans-serif;
+    height: inherit;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.block1 {
+    text-align: center;
+}
+
+.block1 h1 {
+    font-size: 44pt;
+    font-weight: 800;
+    margin: 1px;
+    background: linear-gradient(to right, #181aa5, #ff0080);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.block1 p {
+    font-size: 12pt;
+    font-weight: bold;
+    line-height: 9px;
+    color: #1975bd;
+}
+
+.block2 {
+    margin-left: 132px;
+    border-radius: 25px;
+    width: 312px;
+    text-align: center;
+    box-shadow: -3px 1px 8px 2px #928d8d;
+    padding: 10px 0 75px;
+}
+.block2 .form-title {
+    font-size: 25px;
+    margin: 10px 0px 28px;
+    color: #1975bd;
+    font-weight: bold;
+}
+.block2 .form-content {
+    margin-top: 15px;
+}
+
+.block2 .form-content div{
+    margin-bottom: 25px;
+}
+
+.block2 .form-content div input{
+    width: 210px;
+    border: none;
+    border-bottom: 1px solid #1975bd;
+}
+
+.block2 .form-content .submit-btn {
+    margin: auto;
+    width: 50%;
+    background-color: #1975bd;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px 25px;
+}
+
+.submit-btn a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.block2 .form-content i {
+    position: absolute;
+}
+  
+.block2 .form-content .icon {
+    padding: 3px 6px 6px 0px;
+}
+  
+.block2 .form-content .input-field {
+    padding: 3px 6px 6px 20px;
+}

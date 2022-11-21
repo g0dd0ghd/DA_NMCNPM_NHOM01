@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLHS</title>
+    <link rel="icon" href="./assets/img/logo-hcmus-new.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <ul id="nav">
+                <li>
+                    <a href="../MainLobby/">Trang chủ</a>
+                </li>
+                <li><a href="#">
+                    Lớp học
+                    <i class="nav-arrow-down ti-angle-down"></i>
+                </a>
+                    <ul class="subnav">
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="../StudentList/">Xem DS lớp</a></li>
+                        <li><a href="../InsertStudent/">Lập DS lớp</a></li>
+                    </ul>
+                </li>
+            </ul>
+        <!-- End Navigation -->
+        <!-- Begin Avatar -->
+            <div id="avatar">
+                <i class="avatar-icon ti-user"></i>
+                <ul class="subnav">
+                    <li><a href="#">Thông tin</a></li>
+                    <li><a href="../LoginPage/">Đăng xuất</a></li>
+                </ul>
+            </div>
+            <!-- End Avatar -->
+        </div>
+        <div class="row add-student">
+            <a href="../MainLobby/" class="button back-btn"><i class="ti-arrow-left" style="font-size: 10pt"></i> Quay lại</a>
+            <div class="title">Thêm học sinh</div>
+            <div class="col-half add-stu-info">
+                <div class="add-mshs">
+                    <p class="text">MSHS:</p>
+                    <div class="">
+                        <input type="text" placeholder="MSHS" class="form-control" required>
+                    </div>
+                </div>
+                <div class="add-name">
+                    <p class="text">Họ và tên:</p>
+                    <div class="">
+                        <input type="text" placeholder="Họ và tên" class="form-control" required>
+                    </div>
+                </div>
+                <div class="add-class">
+                    <p class="text">Lớp:</p>
+                    <div class="">
+                        <input type="text" placeholder="Lớp" class="form-control" required>
+                    </div>
+                </div>
+                <div class="add-birth">
+                    <p class="text">Ngày sinh:</p>
+                    <div class="">
+                        <input type="date" placeholder="Ngày sinh" class="form-control" required>
+                    </div>
+                </div>
+                <div class="select-sex">
+                    <p class="text">Giới tính:</p>
+                    <select name="" id="" class="sex">
+                        <option value="">Nam</option>
+                        <option value="">Nữ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-half add-stu-info">
+                <div class="add-phone-num">
+                    <p class="text">Số điện thoại:</p>
+                    <div class="">
+                        <input type="tel" placeholder="Số điện thoại" class="form-control" required>
+                    </div>
+                </div>
+                <div class="add-address">
+                    <p class="text">Địa chỉ:</p>
+                    <div class="">
+                        <input type="text" placeholder="Địa chỉ" class="form-control" required>
+                    </div>
+                </div>
+                <div class="add-gpa">
+                    <p class="text">Nhập GPA môn:</p>
+                    <div class="">
+                        <input type="text" placeholder="Môn" class="form-control" required>
+                    </div>
+                    <p class="text">GPA:</p>
+                    <div class="">
+                        <input type="text" placeholder="GPA" class="form-control" style="margin-bottom: 61.33px;" required>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="button submit-btn">Lưu</a>
+        </div>
+    </div>
+    
+</body>
+</html>
