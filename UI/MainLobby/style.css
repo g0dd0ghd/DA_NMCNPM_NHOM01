@@ -86,7 +86,6 @@ html{
     box-shadow: 3px 3px 3px 0 rgba(0,0,0, 0.3);
     text-align: center;
     border-radius: 8px;
-    min-width: 101%;
 }
 
 #nav .subnav li{
@@ -101,7 +100,7 @@ html{
 }
 
 #nav .subnav a {
-    margin: 0 20px;
+    margin: 0 0;
     color: var(--title-color);
 }
 
