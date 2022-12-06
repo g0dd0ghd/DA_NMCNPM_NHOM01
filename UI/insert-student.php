@@ -54,6 +54,7 @@
     }
   }
   else{
+    echo "reach";
     echo "<script>alert('You cannot access this site.');</script>";
     echo "<script>window.location = 'javascript:history.go(-1);';</script>";
     exit;
