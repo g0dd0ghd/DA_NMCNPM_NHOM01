@@ -1,60 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QLHS</title>
-    <link rel="icon" href="../assets/img/logo-hcmus-new.png">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
-</head>
-<body>
+    <link rel="icon" href="../assets/img/logo-hcmus-new.png" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  </head>
+  <body>
     <div id="main">
-        <div id="header">
-            <ul id="nav">
-                <li>
-                    <a href="../MainLobby/">Trang chủ</a>
-                </li>
-                <li><a href="#">
-                    Lớp học
-                    <i class="nav-arrow-down ti-angle-down"></i>
-                </a>
-                    <ul class="subnav">
-                        <li><a href="#">Forum</a></li>
-                        <li><a href="../StudentList/">Xem DS lớp</a></li>
-                        <li><a href="../InsertStudent/">Tiếp nhận HS</a></li>
-                    </ul>
-                </li>
+      <div id="header">
+        <!-- Begin Navigation -->
+        <ul id="nav">
+          <li>
+            <a href="../MainLobby/"><i class="fas fa-home"></i> Trang chủ</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-book-open"></i> Lớp học</a>
+            <ul class="subnav">
+              <li><a href="../SearchStudent/index.html">Tra cứu HS</a></li>
+              <li><a href="../StudentList/index.html">Xem DS lớp</a></li>
+              <li><a href="../InsertStudent/index.html">Tiếp nhận HS</a></li>
+              <li><a href="../ScoreSheet/index.html">Bảng điểm</a></li>
             </ul>
+          </li>
+          <li>
+            <a href="#"><i class="far fa-list-alt"></i> Báo cáo</a>
+            <ul class="subnav">
+              <li><a href="#">Tổng kết môn</a></li>
+              <li><a href="#">Tổng kết HK</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-users"></i> Quản lý</a>
+            <ul class="subnav">
+              <li><a href="#">Tài khoản</a></li>
+              <li><a href="#">Lớp học</a></li>
+              <li><a href="#">Môn học</a></li>
+            </ul>
+          </li>
+        </ul>
         <!-- End Navigation -->
         <!-- Begin Avatar -->
-            <div id="avatar">
-                <i class="avatar-icon ti-user"></i>
-                <ul class="subnav">
-                    <li><a href="#">Thông tin</a></li>
-                    <li><a href="../LoginPage/">Đăng xuất</a></li>
-                </ul>
-            </div>
+        <div id="avatar">
+          <i class="avatar-icon fas fa-user-alt"></i>
+          <ul class="subnav">
+            <li><a href="#">Thông tin</a></li>
+            <li><a href="../LoginPage/index.html">Đăng xuất</a></li>
+          </ul>
+        </div>
         <!-- End Avatar -->
+      </div>
+      <!-- Begin Description Content -->
+      <div id="description">
+        <div class="introduction">
+          <img src="../assets/img/edu-logo.png" alt="logo" class="edu-logo" />
+          <p class="text-heading">StuW3b - Hệ thống quản lý học sinh</p>
         </div>
-        <div id="description">
-                <div class="home-section">
-                    <div class="col-half-left school-logo">
-                        <img src="../assets/img/logo-hcmus-new.png" alt="logo" class="logo-img">
-                    </div>
-                    <div class="col-half-right text-description">
-                        Một website được thiết kế để giúp việc quản lý điểm số học sinh và cho ra những thống kê chính xác
-                    </div>
-                    <div class="col-half-left text-heading">
-                        StuW3b - An Educational Website
-                    </div>
-                    <div class="col-half-left text-footer">
-                        Made by USKnights
-                    </div>
-                </div>
-            </div>
+        <div class="feature-box">
+          <div class="feature">
+            <img src="../assets/img/item_system.png" class="item-icon" />
+            <p class="text-feature">Quản lý đơn giản</p>
+          </div>
+          <div class="feature">
+            <img src="../assets/img/item_rule.png" class="item-icon" />
+            <p class="text-feature">Đáp ứng quy chuẩn</p>
+          </div>
+          <div class="feature">
+            <img src="../assets/img/item_time.png" class="item-icon" />
+            <p class="text-feature">Tiết kiệm thời gian</p>
+          </div>
         </div>
+        <!-- End Description Content -->
+        <!-- Begin Footer -->
+        <div class="footer">
+          <a href="#"><h4 class="item-footer">Phản hồi khách hàng</h4></a>
+          <a href="#"><h4 class="item-footer">Về chúng tôi</h4></a>
+          <a href="#"><h4 class="item-footer">Chính sách người dùng</h4></a>
+          <a href="#"><h4 class="item-footer">Trung tâm hỗ trợ</h4></a>
+          <br />
+          <h4 class="item-footer copyright"><i class="far fa-copyright"></i> Copyright 2022. Sản phẩm của USKnights</h4>
+        </div>
+        <!-- End Footer -->
+      </div>
     </div>
-</body>
+  </body>
 </html>

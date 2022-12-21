@@ -1,0 +1,202 @@
+/* css common */
+:root {
+  --font-used: "Roboto", sans-serif;
+  --header-height: 46.5px;
+  --item-height: 31.5px;
+  --gray: #868e96;
+  --light: #f8f9fa;
+  --purple: #414c74;
+  --black: #181717;
+  --primary: #5567ff;
+  --secondary: #824ee1;
+}
+
+/* css main */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-used);
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  font-size: small;
+}
+
+#header {
+  height: var(--header-height);
+  background: var(--purple);
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#nav {
+  display: inline-block;
+}
+
+#nav li {
+  display: inline-block;
+  position: relative;
+}
+
+#nav li a {
+  display: inline-block;
+  margin: calc((var(--header-height) - var(--item-height)) / 2) 12px;
+  line-height: var(--item-height);
+  text-decoration: none;
+  color: var(--light);
+  padding: 0 10px;
+}
+
+#nav > li > a {
+  text-transform: uppercase;
+}
+
+#nav li:hover .subnav,
+#avatar:hover .subnav {
+  display: block;
+}
+
+#nav .subnav {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 3px;
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover > a,
+#avatar .subnav li:hover > a {
+  background: var(--light);
+  color: var(--black);
+  border-radius: 3px;
+}
+
+#nav .subnav a {
+  margin: 0 0;
+  color: var(--gray);
+}
+
+#avatar {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  right: 1%;
+}
+
+#avatar:hover .avatar-icon {
+  background: var(--light);
+  color: var(--black);
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#avatar .avatar-icon {
+  display: inline-block;
+  margin: calc((var(--header-height) - var(--item-height)) / 2) 30px;
+  line-height: var(--item-height);
+  color: white;
+  padding: 0 20px;
+}
+
+#avatar .subnav {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  list-style: none;
+  text-align: center;
+  min-width: 100%;
+}
+
+#avatar .subnav a {
+  color: var(--gray);
+  line-height: var(--item-height);
+  text-decoration: none;
+}
+
+#student-list {
+  display: block;
+  padding-top: var(--header-height);
+  width: 90%;
+  margin: auto;
+}
+
+#student-list > p {
+  margin: 40px 0;
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+#student-list .toolbar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+#student-list .toolbar .item {
+  font-size: medium;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#student-list .toolbar #class {
+  margin-right: 20px;
+  font-size: 14px;
+  padding: 3px 15px;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+}
+
+#student-list .toolbar input[type="text"] {
+  font-size: 14px;
+  padding: 4px 10px;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  text-align: center;
+  width: 10%;
+  transition: all 0.5s ease-in-out;
+}
+
+#student-list .toolbar input[type="text"]:focus {
+  outline: none;
+  width: 20%;
+  transition: all 0.5s ease-in-out;
+}
+
+#student-list .toolbar .fa-search {
+  color: var(--primary);
+}
+
+#student-list .student-tab {
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+#student-list .student-tab table,
+th,
+td {
+  padding: 3px 0;
+  border: #c5c5c5 2px solid;
+}
+
+#student-list .student-tab th {
+  color: var(--purple);
+}

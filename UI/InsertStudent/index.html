@@ -1,96 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QLHS</title>
-    <link rel="icon" href="./assets/img/logo-hcmus-new.png">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
-</head>
-<body>
+    <link rel="icon" href="../assets/img/logo-hcmus-new.png" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  </head>
+  <body>
     <div id="main">
-        <div id="header">
-            <ul id="nav">
-                <li>
-                    <a href="../MainLobby/">Trang chủ</a>
-                </li>
-                <li><a href="#">
-                    Lớp học
-                    <i class="nav-arrow-down ti-angle-down"></i>
-                </a>
-                    <ul class="subnav">
-                        <li><a href="#">Forum</a></li>
-                        <li><a href="../StudentList/">Xem DS lớp</a></li>
-                        <li><a href="../InsertStudent/">Tiếp nhận HS</a></li>
-                    </ul>
-                </li>
+      <div id="header">
+        <!-- Begin Navigation -->
+        <ul id="nav">
+          <li>
+            <a href="../MainLobby/"><i class="fas fa-home"></i> Trang chủ</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-book-open"></i> Lớp học</a>
+            <ul class="subnav">
+              <li><a href="../SearchStudent/index.html">Tra cứu HS</a></li>
+              <li><a href="../StudentList/index.html">Xem DS lớp</a></li>
+              <li><a href="../InsertStudent/index.html">Tiếp nhận HS</a></li>
+              <li><a href="../ScoreSheet/index.html">Bảng điểm</a></li>
             </ul>
+          </li>
+          <li>
+            <a href="#"><i class="far fa-list-alt"></i> Báo cáo</a>
+            <ul class="subnav">
+              <li><a href="#">Tổng kết môn</a></li>
+              <li><a href="#">Tổng kết HK</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-users"></i> Quản lý</a>
+            <ul class="subnav">
+              <li><a href="#">Tài khoản</a></li>
+              <li><a href="#">Lớp học</a></li>
+              <li><a href="#">Môn học</a></li>
+            </ul>
+          </li>
+        </ul>
         <!-- End Navigation -->
         <!-- Begin Avatar -->
-            <div id="avatar">
-                <i class="avatar-icon ti-user"></i>
-                <ul class="subnav">
-                    <li><a href="#">Thông tin</a></li>
-                    <li><a href="../LoginPage/">Đăng xuất</a></li>
-                </ul>
-            </div>
-            <!-- End Avatar -->
+        <div id="avatar">
+          <i class="avatar-icon fas fa-user-alt"></i>
+          <ul class="subnav">
+            <li><a href="#">Thông tin</a></li>
+            <li><a href="../LoginPage/index.html">Đăng xuất</a></li>
+          </ul>
         </div>
-        <div class="row add-student">
-            <a href="../MainLobby/" class="button back-btn"><i class="ti-arrow-left" style="font-size: 10pt"></i> Quay lại</a>
-            <div class="title">Thêm học sinh</div>
-            <div class="col-half add-stu-info">
-                <div class="add-mshs">
-                    <p class="text">MSHS:</p>
-                    <div class="">
-                        <input type="text" placeholder="MSHS" class="form-control" required>
-                    </div>
-                </div>
-                <div class="add-name">
-                    <p class="text">Họ và tên:</p>
-                    <div class="">
-                        <input type="text" placeholder="Họ và tên" class="form-control" required>
-                    </div>
-                </div>
-                <div class="add-class">
-                    <p class="text">Lớp:</p>
-                    <div class="">
-                        <input type="text" placeholder="Lớp" class="form-control" required>
-                    </div>
-                </div>
-                <div class="select-sex">
-                    <p class="text">Giới tính:</p>
-                    <select name="" id="" class="sex">
-                        <option value="">Nam</option>
-                        <option value="">Nữ</option>
-                    </select>
-                </div>
+        <!-- End Avatar -->
+      </div>
+      <!-- Begin Add Student -->
+      <div id="add-student">
+        <p>Tiếp nhận học sinh</p>
+        <a href="../MainLobby/index.html" class="button">
+          <h4><i class="fas fa-caret-left"></i> Thoát</h4>
+        </a>
+        <div class="input-group">
+          <div class="item">
+            <label for="student-name">Tên học sinh:</label>
+            <input type="text" id="student-name" placeholder="Họ và tên" />
+          </div>
+          <div class="item">
+            <label for="student-phonenum">Số điện thoại:</label>
+            <input type="text" id="student-phonenum" placeholder="Số điện thoại" />
+          </div>
+          <div class="item">
+            <label for="student-address">Địa chỉ:</label>
+            <input type="text" id="student-address" placeholder="Địa chỉ" />
+          </div>
+          <div class="item">
+            <label for="student-birthday">Ngày sinh:</label>
+            <input type="date" id="student-birthday" />
+          </div>
+          <div class="item">
+            <div class="sub-item">
+              <label for="student-gender">Giới tính:</label>
+              <select id="student-gender">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
             </div>
-            <div class="col-half add-stu-info">
-                <div class="add-phone-num">
-                    <p class="text">Số điện thoại:</p>
-                    <div class="">
-                        <input type="tel" placeholder="Số điện thoại" class="form-control" required>
-                    </div>
-                </div>
-                <div class="add-address">
-                    <p class="text">Địa chỉ:</p>
-                    <div class="">
-                        <input type="text" placeholder="Địa chỉ" class="form-control" required>
-                    </div>
-                </div>
-                <div class="add-birth">
-                    <p class="text">Ngày sinh:</p>
-                    <div class="">
-                        <input type="date" placeholder="Ngày sinh" class="form-control" style="margin-bottom: 56.6777px;" required>
-                    </div>
-                </div>
+            <div class="sub-item">
+              <label for="student-class">Lớp:</label>
+              <input type="text" id="student-class" placeholder="Lớp" />
             </div>
-            <a href="" class="button submit-btn">Lưu</a>
+          </div>
+          <a href="" class="button save-btn" onclick="javascript:alert('Đã lưu thông tin!')">
+            <h4><i class="fas fa-save"></i> Lưu</h4>
+          </a>
         </div>
+      </div>
+      <!-- End Add Student -->
     </div>
-    
-</body>
+  </body>
 </html>

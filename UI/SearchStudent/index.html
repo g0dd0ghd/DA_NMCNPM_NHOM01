@@ -61,19 +61,17 @@
       </div>
       <!-- Begin Student List -->
       <div id="student-list">
-        <p>Danh sách học sinh</p>
+        <p>Tra cứu học sinh</p>
         <div class="toolbar">
           <label for="class" class="item">Chọn lớp: </label>
           <select id="class" class="item">
+            <option value=""></option>
             <option value="10A1">10A1</option>
             <option value="10A2">10A2</option>
             <option value="10A3">10A3</option>
           </select>
-          <div class="button">
-            <a href="../InsertStudent/index.html" class="item"><i class="fas fa-plus"></i> Thêm</a>
-            <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
-          </div>
+          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
+          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
         </div>
         <table class="student-tab">
           <thead>
@@ -81,67 +79,44 @@
               <th>STT</th>
               <th>Mã số HS</th>
               <th>Họ và Tên</th>
-              <th>Giới tính</th>
-              <th>Ngày sinh</th>
-              <th>Số điện thoại</th>
-              <th>Địa chỉ</th>
-              <th>Hành động</th>
+              <th>Lớp</th>
+              <th>Điểm TB HKI</th>
+              <th>Điểm TB HKII</th>
+              <th>Trung bình tổng</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>220001</td>
-              <td><input type="text" value="Nguyễn Văn A" /></td>
-              <td><input type="text" value="Nam" /></td>
-              <td><input type="text" value="01/01/2016" /></td>
-              <td><input type="text" value="0924642574" /></td>
-              <td><input type="text" value="37 Võ Văn Ngân, Q.Thủ Đức, TP.HCM" /></td>
-              <td>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </td>
+              <td>Nguyễn Văn A</td>
+              <td>10A1</td>
+              <td>9.0</td>
+              <td>10</td>
+              <td>9.7</td>
             </tr>
             <tr>
-              <td>2</td>
+              <td>1</td>
               <td>220002</td>
-              <td><input type="text" value="Nguyễn Văn B" /></td>
-              <td><input type="text" value="Nam" /></td>
-              <td><input type="text" value="09/05/2016" /></td>
-              <td><input type="text" value="0939643678" /></td>
-              <td><input type="text" value="216 Lý Thường Kiệt, Q.Thủ Đức, TP.HCM" /></td>
-              <td>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </td>
+              <td>Nguyễn Văn B</td>
+              <td>10A1</td>
+              <td>8.0</td>
+              <td>9.5</td>
+              <td>9.0</td>
             </tr>
           </tbody>
         </table>
       </div>
       <!-- End Student List -->
     </div>
-    <!-- Custom Script  -->
+    <!-- Custom Script -->
     <script>
-      // when click edit button, change input with type=text to editable
-      document.getElementById("edit-btn").addEventListener("click", function () {
-        let inputs = document.querySelectorAll("input[type=text]");
-        inputs.forEach((input) => {
-          input.style.pointerEvents = "auto";
-          input.style.fontStyle = "normal";
-        });
-        // display save button and hide edit button
-        document.getElementById("edit-btn").style.display = "none";
-        document.getElementById("save-btn").style.display = "unset";
-      });
-
-      // when click save button, change input with type=text to original
-      document.getElementById("save-btn").addEventListener("click", function () {
-        let inputs = document.querySelectorAll("input[type=text]");
-        inputs.forEach((input) => {
-          input.style.pointerEvents = "none";
-          input.style.fontStyle = "italic";
-        });
-        // display edit button and hide save button
-        document.getElementById("edit-btn").style.display = "unset";
-        document.getElementById("save-btn").style.display = "none";
+      var input = document.getElementById("search-input");
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("search-btn").click();
+        }
       });
     </script>
   </body>

@@ -5,6 +5,7 @@ html
 }
 
 body {
+    margin: 0 0;
     font-family: sans-serif;
     height: inherit;
 }
@@ -22,13 +23,13 @@ body {
 }
 
 .block1 h1 {
-    font-size: 44pt;
+    font-size: 60px;
     font-weight: 800;
     margin: 1px;
-    background: linear-gradient(to right, #181aa5, #ff0080);
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #65c6ff;
+    text-shadow: #838383 0px 0px 5px;
 }
 
 .block1 p {
@@ -43,7 +44,7 @@ body {
     border-radius: 25px;
     width: 312px;
     text-align: center;
-    box-shadow: -3px 1px 8px 2px #928d8d;
+    box-shadow: 3px 3px 3px 3px #928d8d;
     padding: 10px 0 75px;
 }
 .block2 .form-title {
