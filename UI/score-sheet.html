@@ -7,7 +7,8 @@
     <title>QLHS</title>
     <link rel="icon" href="../assets/img/logo-hcmus-new.png" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/student-list.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- Google Fonts -->
@@ -21,30 +22,30 @@
         <!-- Begin Navigation -->
         <ul id="nav">
           <li>
-            <a href="../MainLobby/"><i class="fas fa-home"></i> Trang chủ</a>
+            <a href="./home-page.html"><i class="fas fa-home"></i> Trang chủ</a>
           </li>
           <li>
             <a href="#"><i class="fas fa-book-open"></i> Lớp học</a>
             <ul class="subnav">
-              <li><a href="../SearchStudent/index.html">Tra cứu HS</a></li>
-              <li><a href="../StudentList/index.html">Xem DS lớp</a></li>
-              <li><a href="../InsertStudent/index.html">Tiếp nhận HS</a></li>
-              <li><a href="../ScoreSheet/index.html">Bảng điểm</a></li>
+              <li><a href="./search-student.html">Tra cứu HS</a></li>
+              <li><a href="./student-list.html">Xem DS lớp</a></li>
+              <li><a href="./insert-student.html">Tiếp nhận HS</a></li>
+              <li><a href="./score-sheet.html">Bảng điểm</a></li>
             </ul>
           </li>
           <li>
             <a href="#"><i class="far fa-list-alt"></i> Báo cáo</a>
             <ul class="subnav">
-              <li><a href="#">Tổng kết môn</a></li>
-              <li><a href="#">Tổng kết HK</a></li>
+              <li><a href="./subject-summary.html">Tổng kết môn</a></li>
+              <li><a href="./semester-summary.html">Tổng kết HK</a></li>
             </ul>
           </li>
           <li>
             <a href="#"><i class="fas fa-users"></i> Quản lý</a>
             <ul class="subnav">
-              <li><a href="#">Tài khoản</a></li>
-              <li><a href="#">Lớp học</a></li>
-              <li><a href="#">Môn học</a></li>
+              <li><a href="./accounts/admin.html">Admin</a></li>
+              <li><a href="./accounts/teacher.html">Giáo viên</a></li>
+              <li><a href="./accounts/student.html">Học sinh</a></li>
             </ul>
           </li>
         </ul>
@@ -54,24 +55,39 @@
           <i class="avatar-icon fas fa-user-alt"></i>
           <ul class="subnav">
             <li><a href="#">Thông tin</a></li>
-            <li><a href="../LoginPage/index.html">Đăng xuất</a></li>
+            <li><a href="./login.html">Đăng xuất</a></li>
           </ul>
         </div>
         <!-- End Avatar -->
       </div>
-      <!-- Begin Student List -->
+      <!-- Begin Score Sheet -->
       <div id="student-list">
-        <p>Tra cứu học sinh</p>
+        <p>Bảng điểm môn học</p>
         <div class="toolbar">
+          <label for="subject" class="item">Chọn môn: </label>
+          <select id="subject" class="item">
+            <option value="null"></option>
+            <option value="Math">Toán</option>
+            <option value="Physics">Lý</option>
+            <option value="Chemistry">Hóa</option>
+          </select>
           <label for="class" class="item">Chọn lớp: </label>
           <select id="class" class="item">
-            <option value=""></option>
+            <option value="null"></option>
             <option value="10A1">10A1</option>
             <option value="10A2">10A2</option>
             <option value="10A3">10A3</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
-          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
+          <label for="semester" class="item">Chọn học kì: </label>
+          <select id="semester" class="item">
+            <option value="null"></option>
+            <option value="Frist">HKI</option>
+            <option value="Second">HKII</option>
+          </select>
+          <div class="button">
+            <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
+            <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
+          </div>
         </div>
         <table class="student-tab">
           <thead>
@@ -79,10 +95,9 @@
               <th>STT</th>
               <th>Mã số HS</th>
               <th>Họ và Tên</th>
-              <th>Lớp</th>
-              <th>Điểm TB HKI</th>
-              <th>Điểm TB HKII</th>
-              <th>Trung bình tổng</th>
+              <th>Điểm 15 phút</th>
+              <th>Điểm một tiết</th>
+              <th>Điểm cuối HK</th>
             </tr>
           </thead>
           <tbody>
@@ -90,34 +105,24 @@
               <td>1</td>
               <td>220001</td>
               <td>Nguyễn Văn A</td>
-              <td>10A1</td>
-              <td>9.0</td>
-              <td>10</td>
-              <td>9.7</td>
+              <td><input type="text" value="9.0" /></td>
+              <td><input type="text" value="10" /></td>
+              <td><input type="text" value="9.7" /></td>
             </tr>
             <tr>
               <td>1</td>
               <td>220002</td>
               <td>Nguyễn Văn B</td>
-              <td>10A1</td>
-              <td>8.0</td>
-              <td>9.5</td>
-              <td>9.0</td>
+              <td><input type="text" value="8.0" /></td>
+              <td><input type="text" value="9.5" /></td>
+              <td><input type="text" value="9.0" /></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <!-- End Student List -->
+      <!-- End Score Sheet -->
     </div>
-    <!-- Custom Script -->
-    <script>
-      var input = document.getElementById("search-input");
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          document.getElementById("search-btn").click();
-        }
-      });
-    </script>
+    <!-- Custon Script -->
+    <script src="./js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,57 @@
+#summary{
+    display: block;
+    padding-top: var(--header-height);
+    width: 70%;
+    margin: auto;
+}
+
+#summary > p {
+    margin: 40px 0;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+#summary .toolbar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+#summary .toolbar .item {
+    font-size: medium;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#summary .toolbar #class,
+#summary .toolbar #subject,
+#summary .toolbar #semester,
+#summary .toolbar #year {
+    margin-right: 20px;
+    font-size: 14px;
+    padding: 3px 15px;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+
+#summary .summary-tab {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+#summary .summary-tab table,th,td {
+    padding: 3px 0;
+    border: #c5c5c5 2px solid;
+}
+  
+#summary .summary-tab th {
+    color: var(--purple);
+}

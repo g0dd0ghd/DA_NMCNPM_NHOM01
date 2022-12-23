@@ -1,0 +1,125 @@
+/* For All Student Table */
+
+#student-list {
+    display: block;
+    padding-top: var(--header-height);
+    width: 80%;
+    margin: auto;
+}
+
+#student-list > p {
+    margin: 40px 0;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+#student-list .toolbar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+#student-list .toolbar .item {
+    font-size: medium;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#student-list .toolbar #class,
+#student-list .toolbar #subject,
+#student-list .toolbar #semester {
+    margin-right: 20px;
+    font-size: 14px;
+    padding: 3px 15px;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+
+#student-list .toolbar input[type="text"] {
+    font-size: 14px;
+    padding: 4px 10px;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    text-align: center;
+    width: 10%;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  #student-list .toolbar input[type="text"]:focus {
+    outline: none;
+    width: 20%;
+    transition: all 0.5s ease-in-out;
+  }
+
+#student-list .toolbar .button
+{
+    flex: 1;
+    text-align: right;
+}
+
+#student-list .toolbar .button a
+{
+    padding: 3px 10px;
+    text-decoration: none;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#student-list .toolbar .button a:hover
+{
+    background: var(--primary);
+    color: var(--light);
+}
+
+#student-list .toolbar .button #save-btn
+{
+    display: none;
+}
+
+#student-list .student-tab {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+#student-list .student-tab td input[type="text"]
+{
+    pointer-events: none;
+    font-size: 14px;
+    font-style: italic;
+    border: none;
+    text-align: center;
+    width: 90%;
+}
+
+#student-list .student-tab table,th,td {
+    padding: 3px 0;
+    border: #c5c5c5 2px solid;
+}
+  
+#student-list .student-tab th {
+    color: var(--purple);
+}
+
+#student-list .student-tab a
+{
+    text-decoration: none;
+}
+
+#student-list .toolbar .fa-search {
+    color: var(--primary);
+  }
+
+#student-list .student-tab td .fa-trash-alt
+{
+    color: red;
+}

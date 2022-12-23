@@ -1,0 +1,123 @@
+#description .text-heading {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 600;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #65c6ff;
+    text-shadow: #bbbbbb 0px 0px 5px;
+    animation: popOutIn 1.5s ease-out;
+}
+
+#description {
+    margin-top: var(--header-height);
+    background-image: url(../assets/img/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+#description .introduction .edu-logo {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+    animation: fadeIn 1s;
+}
+
+#description .feature-box {
+    display: flex;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin-top: 50px;
+    width: 50%;
+}
+
+#description .feature:nth-child(1) {
+    margin: 20px auto;
+    visibility: hidden;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s, floating 1.3s linear forwards;
+}
+
+#description .feature:nth-child(2) {
+    margin: 20px auto;
+    visibility: hidden;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s, floating 1.3s 0.2s linear forwards;
+}
+
+#description .feature:nth-child(3) {
+    margin: 20px auto;
+    visibility: hidden;
+    text-align: center;
+    color: white;
+    animation: fadeIn 2s, floating 1.3s 0.4s linear forwards;
+}
+
+#description .feature .item-icon {
+    width: 70px;
+    height: 70px;
+
+}
+
+#description .feature .text-feature {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#footer {
+    text-align: center;
+    background-color: #181616;
+}
+
+#footer .item-footer {
+    display: inline-block;
+    margin: 10px 20px;
+    color: var(--gray);
+}
+
+#footer .item-footer:hover:not(.copyright) {
+    color: var(--light);
+}
+
+/* animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes floating {
+    from {
+        visibility: visible;
+        transform: translateY(40px);
+    }
+
+    to {
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popOutIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
