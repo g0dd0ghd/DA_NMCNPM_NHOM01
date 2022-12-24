@@ -66,9 +66,10 @@
 
 #profile-wrapper .profile > img
 {
-    width: 80%;
-    height: auto;
-    border-radius: 5px;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 45%;
     transition: all 0.3s ease-in;
 }
 
