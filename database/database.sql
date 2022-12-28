@@ -2,7 +2,7 @@ CREATE DATABASE `Quan_ly_hoc_sinh`;
 use `Quan_ly_hoc_sinh`;
 
 create table `TaiKhoan` (
-	`MaNguoiDung` char(6) not null,
+	`MaNguoiDung` char(6) default '0',
     `TenNguoiDung` nvarchar(30) not null,
     `MaKhau` nchar(16) not null,
     `MaActor` char(6),
@@ -10,7 +10,7 @@ create table `TaiKhoan` (
 );
 
 create table `HocSinh` (
-	`MaHocSinh` char(6) not null,
+	`MaHocSinh` char(6) default '0',
 	`HoTen` nvarchar(20) not null,
     `GioiTinh` nvarchar(3),
     `NgaySinh` date,
@@ -21,7 +21,7 @@ create table `HocSinh` (
 );
 
 create table `GiaoVien`(
-	`MaGiaoVien` char(6) not null,
+	`MaGiaoVien` char(6) default '0',
 	`HoTen` nvarchar(20) not null,
     `GioiTinh` nvarchar(3),
     `NgaySinh` date,
@@ -96,5 +96,3 @@ alter table `Lop-MonHoc` add constraint fk_MH_Lop foreign key (`MaMH`) reference
 alter table `Lop-MonHoc` add constraint fk_Lop_MH foreign key (`MaLop`) references lop(`MaLop`);
 alter table `Lop-GiaoVien` add constraint fk_GV_Lop foreign key (`MaGV`) references giaovien(`MaGiaoVien`);
 alter table `Lop-GiaoVien` add constraint fk_Lop_GV foreign key (`MaLop`) references lop(`MaLop`);
-
-alter table `taikhoan` drop foreign key fk_ActorHS
