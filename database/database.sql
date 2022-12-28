@@ -5,7 +5,7 @@ use `Quan_ly_hoc_sinh`;
 create table `TaiKhoan` (
 	`MaNguoiDung` char(6) default '0',
     `TenNguoiDung` nvarchar(30) not null,
-    `MaKhau` nchar(16) not null,
+    `MatKhau` nchar(16) not null,
     `MaActor` char(6),
     primary key (`MaNguoiDung`)
 );

@@ -26,7 +26,7 @@
                 $result = mysqli_stmt_get_result($statement);
                 
                 if($row = mysqli_fetch_assoc($result)){
-                    if($password !== $row['MaKhau']){
+                    if($password !== $row['MatKhau']){
                         
                         header("Location: ../login.html?error=wrongusernameorpassword");
                         exit();
