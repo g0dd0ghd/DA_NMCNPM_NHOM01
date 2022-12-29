@@ -20,4 +20,41 @@ function disconnect_db(){
     }
 }
 
+// Hàm lấy tài khoản theo MaActor
+function get_account_id($id){
+    global $conn;
+    connect_db();
+
+    $sql = "select * from TaiKhoan where MaActor LIKE '$id%' ";
+    
+    $query = mysqli_query($conn, $sql);
+    $result = array();
+    
+    if ($query){
+        while ($row = mysqli_fetch_assoc($query)){
+            $result[] = $row;
+        }
+    }
+
+    return $result;
+}
+
+// Hàm lấy tài khoản theo MaNguoiDung
+function get_account($id)
+{
+    global $conn;
+    connect_db();
+
+    $sql = "select * from TaiKhoan where MaNguoiDung = {$id}";
+    $query = mysqli_query($conn, $sql);
+    
+    $result = array();
+
+    if (mysqli_num_rows($query) > 0){
+        $row = mysqli_fetch_assoc($query);
+        $result = $row;
+    }
+
+    return $result;
+}
 ?>
