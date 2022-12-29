@@ -72,8 +72,6 @@
           <input type="text" placeholder="Tên người dùng" class="item" id="search-input" />
           <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
           <div class="button">
-            <a href="#" class="item" id="add-btn"><i class="fas fa-plus"></i> Thêm</a>
-            <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
             <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
           </div>
         </div>
