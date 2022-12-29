@@ -1,3 +1,22 @@
+<?php
+require_once "./includes/database.php";
+
+$query = "SELECT MaLop FROM lop ORDER BY MaLop DESC";
+$statement = mysqli_stmt_init($conn);
+
+if(!mysqli_stmt_prepare($statement, $query)){
+                
+  header("Location: ../login.html?error");
+  exit();
+}
+else{
+  mysqli_stmt_execute($statement);
+  $result = mysqli_stmt_get_result($statement);
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +27,7 @@
     <link rel="icon" href="./assets/img/logo-hcmus-new.png" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/insert-student.css" />
+    <link rel="stylesheet" href="./css/student-list.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- Google Fonts -->
@@ -60,48 +79,67 @@
         </div>
         <!-- End Avatar -->
       </div>
-      <!-- Begin Add Student -->
-      <div id="add-student">
-        <p>Tiếp nhận học sinh</p>
-        <a href="./home-page.html" class="button">
-          <h4><i class="fas fa-caret-left"></i> Thoát</h4>
-        </a>
-        <div class="input-group">
-          <div class="item">
-            <label for="student-name">Tên học sinh:</label>
-            <input type="text" id="student-name" placeholder="Họ và tên" />
-          </div>
-          <div class="item">
-            <label for="student-phonenum">Số điện thoại:</label>
-            <input type="text" id="student-phonenum" placeholder="Số điện thoại" />
-          </div>
-          <div class="item">
-            <label for="student-address">Địa chỉ:</label>
-            <input type="text" id="student-address" placeholder="Địa chỉ" />
-          </div>
-          <div class="item">
-            <label for="student-birthday">Ngày sinh:</label>
-            <input type="date" id="student-birthday" />
-          </div>
-          <div class="item">
-            <div class="sub-item">
-              <label for="student-gender">Giới tính:</label>
-              <select id="student-gender">
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-              </select>
-            </div>
-            <div class="sub-item">
-              <label for="student-class">Lớp:</label>
-              <input type="text" id="student-class" placeholder="Lớp" />
-            </div>
-          </div>
-          <a href="" class="button save-btn" onclick="javascript:alert('Đã lưu thông tin!')">
-            <h4><i class="fas fa-save"></i> Lưu</h4>
-          </a>
+      <!-- Begin Student List -->
+      <div id="student-list">
+        <p>Tra cứu học sinh</p>
+        <div class="toolbar">
+          <label for="class" class="item">Chọn lớp: </label>
+          <select id="class" class="item" name="categories">
+            <option value="null"></option>
+            <?php
+              while($row = mysqli_fetch_array($result)){
+                echo "<option value='".$row['MaLop']."'>".$row['MaLop']."</option>";
+              }
+            ?>
+          </select>
+          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
+          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
         </div>
+        <table class="student-tab">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã số HS</th>
+              <th>Họ và Tên</th>
+              <th>Lớp</th>
+              <th>Điểm TB HKI</th>
+              <th>Điểm TB HKII</th>
+              <th>Trung bình tổng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>220001</td>
+              <td>Nguyễn Văn A</td>
+              <td>10A1</td>
+              <td>9.0</td>
+              <td>10</td>
+              <td>9.7</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>220002</td>
+              <td>Nguyễn Văn B</td>
+              <td>10A1</td>
+              <td>8.0</td>
+              <td>9.5</td>
+              <td>9.0</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <!-- End Add Student -->
+      <!-- End Student List -->
     </div>
+    <!-- Custom Script -->
+    <script>
+      var input = document.getElementById("search-input");
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("search-btn").click();
+        }
+      });
+    </script>
   </body>
 </html>
