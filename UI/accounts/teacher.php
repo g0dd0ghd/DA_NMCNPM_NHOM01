@@ -1,6 +1,12 @@
 <?php
   require_once('./check_admin.php');
 ?>
+<?php
+require_once "../includes/account.php";
+$id = 'GV';
+
+$account = get_account_id($id);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,33 +84,25 @@
         <table class="account-tab">
           <thead>
             <tr>
-              <th>STT</th>
-              <th>Tên tài khoản</th>
-              <th>Mật khẩu</th>
-              <th>Email</th>
+              <th>Mã Tài Khoản</th>
+              <th>Tên Người Dùng</th>
+              <th>Mật Khẩu</th>
+              <th>Tên Tài Khoản</th>
               <th>Hành động</th>
             </tr>
           </thead>
           <tbody>
+            <?php foreach ($account as $row){ ?>
             <tr>
-              <td>1</td>
-              <td><input type="text" value="giaovien01" /></td>
-              <td><input type="text" value="gv12345" /></td>
-              <td><input type="text" value="trinhthid@gmail.com" /></td>
+              <td><input type="text" value=<?php echo $row['MaNguoiDung'];?> /></td>
+              <td><input type="text" value=<?php echo $row['TenNguoiDung'];?> /></td>
+              <td><input type="text" value=<?php echo $row['MatKhau'];?> /></td>
+              <td><input type="text" value=<?php echo $row['MaActor'];?> /></td>
               <td>
                 <a href="#" class="item"><i class="fas fa-trash-alt"></i></a>
               </td>
             </tr>
-
-            <tr>
-              <td>2</td>
-              <td><input type="text" value="giaovien02" /></td>
-              <td><input type="text" value="gv12345" /></td>
-              <td><input type="text" value="nguyenvanc@gmail.com" /></td>
-              <td>
-                <a href="#" class="item"><i class="fas fa-trash-alt"></i></a>
-              </td>
-            </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
