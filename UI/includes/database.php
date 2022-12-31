@@ -3,7 +3,7 @@
 //Params to connect to a database
 $dbHost = "localhost";
 $dbUser = "root";
-$dbPass = "";
+$dbPass = "020902";
 $dbName = "quan_ly_hoc_sinh";
 
 //Connection to database

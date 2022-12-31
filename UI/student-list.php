@@ -1,22 +1,3 @@
-<?php
-require_once "./includes/database.php";
-
-$query = "SELECT MaLop FROM lop ORDER BY MaLop DESC";
-$statement = mysqli_stmt_init($conn);
-
-if(!mysqli_stmt_prepare($statement, $query)){
-                
-  header("Location: ../login.html?error");
-  exit();
-}
-else{
-  mysqli_stmt_execute($statement);
-  $result = mysqli_stmt_get_result($statement);
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,19 +62,19 @@ else{
       </div>
       <!-- Begin Student List -->
       <div id="student-list">
-        <p>Tra cứu học sinh</p>
+        <p>Danh sách học sinh</p>
         <div class="toolbar">
           <label for="class" class="item">Chọn lớp: </label>
-          <select id="class" class="item" name="categories">
-            <option value="null"></option>
-            <?php
-              while($row = mysqli_fetch_array($result)){
-                echo "<option value='".$row['MaLop']."'>".$row['MaLop']."</option>";
-              }
-            ?>
+          <select id="class" class="item">
+            <option value="10A1">10A1</option>
+            <option value="10A2">10A2</option>
+            <option value="10A3">10A3</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
-          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
+          <div class="button">
+            <a href="./insert-student.html" class="item"><i class="fas fa-plus"></i> Thêm</a>
+            <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
+            <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
+          </div>
         </div>
         <table class="student-tab">
           <thead>
@@ -101,45 +82,44 @@ else{
               <th>STT</th>
               <th>Mã số HS</th>
               <th>Họ và Tên</th>
-              <th>Lớp</th>
-              <th>Điểm TB HKI</th>
-              <th>Điểm TB HKII</th>
-              <th>Trung bình tổng</th>
+              <th>Giới tính</th>
+              <th>Ngày sinh</th>
+              <th>Số điện thoại</th>
+              <th class="address">Địa chỉ</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>220001</td>
-              <td>Nguyễn Văn A</td>
-              <td>10A1</td>
-              <td>9.0</td>
-              <td>10</td>
-              <td>9.7</td>
+              <td><input type="text" value="Nguyễn Văn A" /></td>
+              <td><input type="text" value="Nam" /></td>
+              <td><input type="text" value="01/01/2016" /></td>
+              <td><input type="text" value="0924642574" /></td>
+              <td><input type="text" value="37 Võ Văn Ngân, Q.Thủ Đức, TP.HCM" /></td>
+              <td>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </td>
             </tr>
             <tr>
-              <td>1</td>
+              <td>2</td>
               <td>220002</td>
-              <td>Nguyễn Văn B</td>
-              <td>10A1</td>
-              <td>8.0</td>
-              <td>9.5</td>
-              <td>9.0</td>
+              <td><input type="text" value="Nguyễn Văn B" /></td>
+              <td><input type="text" value="Nam" /></td>
+              <td><input type="text" value="09/05/2016" /></td>
+              <td><input type="text" value="0939643678" /></td>
+              <td><input type="text" value="216 Lý Thường Kiệt, Q.Thủ Đức, TP.HCM" /></td>
+              <td>
+                <a href="#"><i class="fas fa-trash-alt"></i></a>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
       <!-- End Student List -->
     </div>
-    <!-- Custom Script -->
-    <script>
-      var input = document.getElementById("search-input");
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          document.getElementById("search-btn").click();
-        }
-      });
-    </script>
+    <!-- Custom Script  -->
+    <script src="./js/app.js"></script>
   </body>
 </html>

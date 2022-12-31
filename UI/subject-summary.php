@@ -1,22 +1,3 @@
-<?php
-require_once "./includes/database.php";
-
-$query = "SELECT MaLop FROM lop ORDER BY MaLop DESC";
-$statement = mysqli_stmt_init($conn);
-
-if(!mysqli_stmt_prepare($statement, $query)){
-                
-  header("Location: ../login.html?error");
-  exit();
-}
-else{
-  mysqli_stmt_execute($statement);
-  $result = mysqli_stmt_get_result($statement);
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +8,7 @@ else{
     <link rel="icon" href="./assets/img/logo-hcmus-new.png" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/student-list.css" />
+    <link rel="stylesheet" href="./css/summary.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- Google Fonts -->
@@ -77,69 +58,70 @@ else{
             <li><a href="./login.html">Đăng xuất</a></li>
           </ul>
         </div>
-        <!-- End Avatar -->
       </div>
-      <!-- Begin Student List -->
-      <div id="student-list">
-        <p>Tra cứu học sinh</p>
+      <!-- End Avatar -->
+      <div id="summary">
+        <p>Bảng điểm tổng kết môn học</p>
         <div class="toolbar">
-          <label for="class" class="item">Chọn lớp: </label>
-          <select id="class" class="item" name="categories">
-            <option value="null"></option>
-            <?php
-              while($row = mysqli_fetch_array($result)){
-                echo "<option value='".$row['MaLop']."'>".$row['MaLop']."</option>";
-              }
-            ?>
+          <label for="class" class="item">Lớp: </label>
+          <select id="class" class="item">
+            <option value=""></option>
+            <option value="10A1">10A1</option>
+            <option value="10A2">10A2</option>
+            <option value="10A3">10A3</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
-          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
+          <label for="subject" class="item">Môn học: </label>
+          <select id="subject" class="item">
+            <option value="null"></option>
+            <option value="Math">Toán</option>
+            <option value="English">Anh Văn</option>
+            <option value="Literature">Ngữ Văn</option>
+          </select>
+          <label for="semester" class="item">Học kỳ: </label>
+          <select id="semester" class="item">
+            <option value="null"></option>
+            <option value="HKI">HKI</option>
+            <option value="HKII">HKII</option>
+          </select>
+          <label for="year" class="item">Niên khóa: </label>
+          <select id="year" class="item">
+            <option value="null"></option>
+            <option value="2019-2020">2019-2020</option>
+            <option value="2020-2021">2020-2021</option>
+            <option value="2021-2022">2021-2022</option>
+          </select>
         </div>
-        <table class="student-tab">
+        <table class="summary-tab">
           <thead>
             <tr>
               <th>STT</th>
-              <th>Mã số HS</th>
-              <th>Họ và Tên</th>
               <th>Lớp</th>
-              <th>Điểm TB HKI</th>
-              <th>Điểm TB HKII</th>
-              <th>Trung bình tổng</th>
+              <th>Môn</th>
+              <th>Sĩ số</th>
+              <th>Số lượng đạt</th>
+              <th>Tỉ lệ</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td>220001</td>
-              <td>Nguyễn Văn A</td>
               <td>10A1</td>
-              <td>9.0</td>
-              <td>10</td>
-              <td>9.7</td>
+              <td>Toán</td>
+              <td>40</td>
+              <td>30</td>
+              <td>75%</td>
             </tr>
             <tr>
               <td>1</td>
-              <td>220002</td>
-              <td>Nguyễn Văn B</td>
-              <td>10A1</td>
-              <td>8.0</td>
-              <td>9.5</td>
-              <td>9.0</td>
+              <td>10A2</td>
+              <td>Toán</td>
+              <td>40</td>
+              <td>35</td>
+              <td>87.5%</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <!-- End Student List -->
     </div>
-    <!-- Custom Script -->
-    <script>
-      var input = document.getElementById("search-input");
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          document.getElementById("search-btn").click();
-        }
-      });
-    </script>
   </body>
 </html>
