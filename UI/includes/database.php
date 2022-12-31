@@ -13,6 +13,11 @@ if (!$conn) {
     die("Database connection failed!");
 }
 
-echo ('ket noi thanh cong')
+function getdata($query){
+    $conn = mysqli_connect('localhost', 'root', '020902', 'quan_ly_hoc_sinh');
+  
+    $data = mysqli_query($conn, $query);
+    return $data;
+  }
 
 ?>
