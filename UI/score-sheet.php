@@ -8,7 +8,7 @@ if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester'])
     $query = $query . " tenmh = '${m}' and";
   }
   if ($l != null){
-    $query = $query . " MaLop = ${l} and";
+    $query = $query . " MaLop = '${l}' and";
   }
   $query = $query . " HocKy = ${s}";
 }
@@ -16,18 +16,11 @@ else {
   $query = "select * from tongket_hocky";
 }
 
-$conn = mysqli_connect('localhost', 'root', '020902', 'quan_ly_hoc_sinh');
+include_once('./includes/database.php');
+
 $data = getdata($query);
 $monhoc = getdata('select distinct(tenmh) from tongket_hocky');
-$namhoc = getdata('select distinct(NamHoc) from tongket_hocky;');
 $lop = getdata('select distinct(MaLop) from tongket_hocky;');
-
-function getdata($query){
-  $conn = mysqli_connect('localhost', 'root', '020902', 'quan_ly_hoc_sinh');
-
-  $data = mysqli_query($conn, $query);
-  return $data;
-}
 
 ?>
 

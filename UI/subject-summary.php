@@ -1,3 +1,34 @@
+<?php
+include_once('./includes/database.php');
+if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
+  $m = $_GET['subject'];
+  $l = $_GET['class'];
+  $s = $_GET['semester'];
+  $y = $_GET['year'];
+  $query = "select * from tb_lop_mon where";
+  if ($m != null){
+    $query = $query . " tenmh = '${m}' and";
+  }
+  if ($l != null){
+    $query = $query . " MaLop = '${l}' and";
+  }
+  if ($y != null){
+    $query = $query . " NamHoc = ${y} and";
+  }
+  $query = $query . " HocKy = ${s}";
+}
+else {
+  $query = "select * from tb_lop_mon";
+}
+
+
+$data = getdata($query);
+$monhoc = getdata('select TenMonHoc as tenmh from MonHoc;');
+$namhoc = getdata('select distinct(NamHoc) from tb_lop_mon;');
+$lop = getdata('select MaLop from Lop;');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,68 +91,69 @@
         </div>
       </div>
       <!-- End Avatar -->
-      <div id="summary">
-        <p>Bảng điểm tổng kết môn học</p>
-        <div class="toolbar">
-          <label for="class" class="item">Lớp: </label>
-          <select id="class" class="item">
-            <option value=""></option>
-            <option value="10A1">10A1</option>
-            <option value="10A2">10A2</option>
-            <option value="10A3">10A3</option>
-          </select>
-          <label for="subject" class="item">Môn học: </label>
-          <select id="subject" class="item">
-            <option value="null"></option>
-            <option value="Math">Toán</option>
-            <option value="English">Anh Văn</option>
-            <option value="Literature">Ngữ Văn</option>
-          </select>
-          <label for="semester" class="item">Học kỳ: </label>
-          <select id="semester" class="item">
-            <option value="null"></option>
-            <option value="HKI">HKI</option>
-            <option value="HKII">HKII</option>
-          </select>
-          <label for="year" class="item">Niên khóa: </label>
-          <select id="year" class="item">
-            <option value="null"></option>
-            <option value="2019-2020">2019-2020</option>
-            <option value="2020-2021">2020-2021</option>
-            <option value="2021-2022">2021-2022</option>
-          </select>
+      <form action = './subject-summary.php' method = "get">
+        <div id="summary">
+          <p>Bảng điểm tổng kết môn học</p>
+          <div class="toolbar">
+            <label for="class" class="item">Lớp: </label>
+            <select name="class" id="class" class="item">
+              <option selected="selected" value=>-Chọn lớp-</option>
+              <?php while ($row = mysqli_fetch_array($lop)):?>
+                <option value=<?php echo $row['MaLop']?>><?php echo $row['MaLop']?></option>
+              <?php endwhile;?>
+            </select>
+            <label for="subject" class="item">Môn học: </label>
+            <select name="subject" id="subject" class="item">
+              <option selected="selected" value=>-Chọn môn-</option>
+              <?php while ($row = mysqli_fetch_array($monhoc)):?>
+                <option value=<?php echo $row['tenmh']?>><?php echo $row['tenmh']?></option>
+              <?php endwhile;?>
+            </select>
+            <label for="semester" class="item">Học kỳ: </label>
+            <select name="semester" id="semester" class="item">
+              <option selected="selected" value=1>HKI</option>
+              <option value=2>HKII</option>
+            </select>
+            <label for="year" class="item">Niên khóa: </label>
+            <select name="year" id="year" class="item">
+              <option selected="selected" value=>-Chọn năm-</option>
+              <?php while ($row = mysqli_fetch_array($namhoc)):?>
+                <option value=<?php echo $row['NamHoc']?>><?php echo $row['NamHoc']?></option>
+              <?php endwhile;?>
+            </select>
+            <div class="submit-btn">
+              <button name="submit" type="submit">Tìm kiếm</button> 
+            </div>
+          </div>
+          <table class="summary-tab">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Lớp</th>
+                <th>Môn</th>
+                <th>Sĩ số</th>
+                <th>Số lượng đạt</th>
+                <th>Tỉ lệ</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+              $i = 1;
+              while ($row = mysqli_fetch_array($data)):
+              ?>
+                <tr>
+                  <td><?php echo $i++;?></td>
+                  <td><?php echo $row['malop'];?></td>
+                  <td><?php echo $row['tenmh'];?></td>
+                  <td><?php echo $row['siso'];?></td>
+                  <td><?php echo $row['sldat'];?></td>
+                  <td><?php echo $row['tiledat']; echo '%';?></td>
+                </tr>
+                <?php endwhile;?>
+            </tbody>
+          </table>
         </div>
-        <table class="summary-tab">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Lớp</th>
-              <th>Môn</th>
-              <th>Sĩ số</th>
-              <th>Số lượng đạt</th>
-              <th>Tỉ lệ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>10A1</td>
-              <td>Toán</td>
-              <td>40</td>
-              <td>30</td>
-              <td>75%</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>10A2</td>
-              <td>Toán</td>
-              <td>40</td>
-              <td>35</td>
-              <td>87.5%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      </form>
     </div>
   </body>
 </html>
