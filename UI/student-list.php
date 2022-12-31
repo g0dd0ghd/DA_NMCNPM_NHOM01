@@ -1,3 +1,19 @@
+<?php
+if (isset($_GET['class']) && $_GET['class'] != null){
+  $l = $_GET['class'];
+  
+  $query = "select * from hocsinh where MaLop = '${l}'";
+}
+else {
+  $query = "select * from hocsinh";
+}
+
+include_once('./includes/database.php');
+
+$data = getdata($query);
+$lop = getdata('select MaLop from lop;');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,62 +77,62 @@
         <!-- End Avatar -->
       </div>
       <!-- Begin Student List -->
-      <div id="student-list">
-        <p>Danh sách học sinh</p>
-        <div class="toolbar">
-          <label for="class" class="item">Chọn lớp: </label>
-          <select id="class" class="item">
-            <option value="10A1">10A1</option>
-            <option value="10A2">10A2</option>
-            <option value="10A3">10A3</option>
-          </select>
-          <div class="button">
-            <a href="./insert-student.html" class="item"><i class="fas fa-plus"></i> Thêm</a>
-            <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
-            <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
+      <form action = './student-list.php' method = "get">
+        <div id="student-list">
+          <p>Danh sách học sinh</p>
+          <div class="toolbar">
+            <label for="class" class="item">Chọn lớp: </label>
+            <select name = "class" id="class" class="item">
+              <option selected = "selected" value=>-Chọn lớp-</option>
+              <?php while ($row = mysqli_fetch_array($lop)):?>
+                <option value=<?php echo $row['MaLop']?>><?php echo $row['MaLop']?></option>
+                <?php endwhile;?>
+              </select>
+            <div class="button">
+              <a href="./insert-student.php" class="item"><i class="fas fa-plus"></i> Thêm</a>
+              <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
+              <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
+            </div>
+            <div class="submit-btn">
+              <button name="submit" type="submit">Tìm kiếm</button> 
+            </div>
           </div>
+          <table class="student-tab">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Mã số HS</th>
+                <th>Họ và Tên</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Email</th>
+                <th class="address">Địa chỉ</th>
+                <th>Lớp</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+                $i = 1;
+                while ($row = mysqli_fetch_array($data)):
+                ?>
+                  <tr>
+                    <td><?php echo $i++;?></td>
+                    <td><?php echo $row['MaHocSinh'];?></td>
+                    <td><?php echo $row['HoTen'];?></td>
+                    <td><?php echo $row['GioiTinh']?></td>
+                    <td><?php echo $row['NgaySinh'];?></td>
+                    <td><?php echo $row['Email'];?></td>
+                    <td><?php echo $row['DiaChi'];?></td>
+                    <td><?php echo $row['MaLop'];?></td>
+                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                  </tr>
+                <?php endwhile;?>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table class="student-tab">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Mã số HS</th>
-              <th>Họ và Tên</th>
-              <th>Giới tính</th>
-              <th>Ngày sinh</th>
-              <th>Số điện thoại</th>
-              <th class="address">Địa chỉ</th>
-              <th>Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>220001</td>
-              <td><input type="text" value="Nguyễn Văn A" /></td>
-              <td><input type="text" value="Nam" /></td>
-              <td><input type="text" value="01/01/2016" /></td>
-              <td><input type="text" value="0924642574" /></td>
-              <td><input type="text" value="37 Võ Văn Ngân, Q.Thủ Đức, TP.HCM" /></td>
-              <td>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>220002</td>
-              <td><input type="text" value="Nguyễn Văn B" /></td>
-              <td><input type="text" value="Nam" /></td>
-              <td><input type="text" value="09/05/2016" /></td>
-              <td><input type="text" value="0939643678" /></td>
-              <td><input type="text" value="216 Lý Thường Kiệt, Q.Thủ Đức, TP.HCM" /></td>
-              <td>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      </form>
       <!-- End Student List -->
     </div>
     <!-- Custom Script  -->
