@@ -57,4 +57,24 @@ function get_account($id)
 
     return $result;
 }
+
+// Hàm sửa tài khoản
+function edit_account($user_id, $user_name, $password, $actor_id){
+    global $conn;
+    connect_db();
+    
+    $account_id = addslashes($user_id);
+    $account_name = addslashes($user_name);
+    $account_password = addslashes($password);
+    $account_actor_id = addslashes($actor_id);
+    
+    $sql = "
+            UPDATE TaiKhoan 
+            SET TenNguoiDung = '$account_name', MatKhau = '$account_password'
+            WHERE MaNguoiDung = $account_id
+    ";
+    $query = mysqli_query($conn, $sql);
+    
+    return $query;
+}
 ?>
