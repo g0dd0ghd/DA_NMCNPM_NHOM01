@@ -77,4 +77,18 @@ function edit_account($user_id, $user_name, $password, $actor_id){
     
     return $query;
 }
+
+// Hàm xóa tài khoản
+function delete_account($account_id){
+    global $conn;
+    connect_db();
+    
+    $sql = "
+    DELETE FROM `TaiKhoan` 
+    WHERE `MaNguoiDung` = $account_id";
+    
+    $query = mysqli_query($conn, $sql);
+    
+    return $query;
+}
 ?>
