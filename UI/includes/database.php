@@ -3,7 +3,7 @@
 //Params to connect to a database
 $dbHost = "localhost";
 $dbUser = "root";
-$dbPass = "020902";
+$dbPass = "";
 $dbName = "quan_ly_hoc_sinh";
 
 //Connection to database
@@ -15,7 +15,7 @@ if (!$conn) {
 
 //
 function getdata($query){
-    $conn = mysqli_connect('localhost', 'root', '020902', 'quan_ly_hoc_sinh');
+    $conn = mysqli_connect('localhost', 'root', '', 'quan_ly_hoc_sinh');
   
     $data = mysqli_query($conn, $query);
     return $data;
