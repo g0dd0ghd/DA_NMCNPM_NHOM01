@@ -47,16 +47,16 @@ $account = get_account_id($id);
           <li>
             <a href="#"><i class="far fa-list-alt"></i> Báo cáo</a>
             <ul class="subnav">
-              <li><a href="../subject-summary.html">Tổng kết môn</a></li>
-              <li><a href="../semester-summary.html">Tổng kết HK</a></li>
+              <li><a href="../subject-summary.php">Tổng kết môn</a></li>
+              <li><a href="../semester-summary.php">Tổng kết HK</a></li>
             </ul>
           </li>
           <li>
             <a href="#"><i class="fas fa-users"></i> Quản lý</a>
             <ul class="subnav">
-              <li><a href="../accounts/admin.html">Admin</a></li>
-              <li><a href="../accounts/teacher.html">Giáo viên</a></li>
-              <li><a href="../accounts/student.html">Học sinh</a></li>
+              <li><a href="../accounts/admin.php">Admin</a></li>
+              <li><a href="../accounts/teacher.php">Giáo viên</a></li>
+              <li><a href="../accounts/student.php">Học sinh</a></li>
             </ul>
           </li>
         </ul>
