@@ -17,15 +17,29 @@ if (isset($_POST['submit'])){
     $giuaky = $_POST['giuaky'];
     $cuoiky = $_POST['cuoiky'];
 
-    $sql1 = "replace into `ketqua` values ('${hs}', '${m}', 1, ${diem15}, ${hk}, ${nh})";
-    $sql2 = "replace into `ketqua` values ('${hs}', '${m}', 2, ${diem45}, ${hk}, ${nh})";
-    $sql3 = "replace into `ketqua` values ('${hs}', '${m}', 3, ${giuaky}, ${hk}, ${nh})";
-    $sql4 = "replace into `ketqua` values ('${hs}', '${m}', 4, ${cuoiky}, ${hk}, ${nh})";
+    if ($diem15 >= 0 && $diem15 <= 10){
 
-    mysqli_query($conn, $sql1);
-    mysqli_query($conn, $sql2);
-    mysqli_query($conn, $sql3);
-    mysqli_query($conn, $sql4);
+        $sql1 = "replace into `ketqua` values ('${hs}', '${m}', 1, ${diem15}, ${hk}, ${nh})";
+        mysqli_query($conn, $sql1);
+    }
+
+    if ($diem45 >= 0 && $diem45 <= 10){
+
+        $sql2 = "replace into `ketqua` values ('${hs}', '${m}', 2, ${diem45}, ${hk}, ${nh})";
+        mysqli_query($conn, $sql2);
+    }
+
+    if ($giuaky >= 0 && $giuaky <= 10){
+
+        $sql3 = "replace into `ketqua` values ('${hs}', '${m}', 3, ${giuaky}, ${hk}, ${nh})";
+        mysqli_query($conn, $sql3);
+    }
+    
+    if ($cuoiky >= 0 && $cuoiky <= 10){
+
+        $sql4 = "replace into `ketqua` values ('${hs}', '${m}', 4, ${cuoiky}, ${hk}, ${nh})";
+        mysqli_query($conn, $sql4);
+    }
 
     header('location:score-sheet.php');
 }
