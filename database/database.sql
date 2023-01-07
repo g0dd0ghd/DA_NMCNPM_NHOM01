@@ -1,4 +1,5 @@
-CREATE DATABASE `Quan_ly_hoc_sinh`;
+drop DATABASE `Quan_ly_hoc_sinh`;
+CREATE OR REPLACE DATABASE `Quan_ly_hoc_sinh`;
 use `Quan_ly_hoc_sinh`;
 
 create table `TaiKhoan` (
@@ -115,7 +116,7 @@ begin
     set taikhoan = taikhoan + 1;
     
     select taikhoan into @tk from primary_key limit 1;
-    set new.MaNguoiDung = LPAD(@hs, 6, '0');
+    set new.MaNguoiDung = LPAD(@tk, 6, '0');
 end$$
 DELIMITER ;
 
@@ -131,7 +132,7 @@ begin
     set new.MaHocSinh = CONCAT('HS', LPAD(@hs, 4, '0'));
     
     update lop l
-    set SiSo = SiSio + 1
+    set SiSo = SiSo + 1
     where new.MaLop = l.MaLop;
 end$$
 DELIMITER ;
@@ -261,7 +262,7 @@ insert into `lop-giaovien` values ('22/122', 'GV0009');
 /*thêm quy định*/
 insert into `quydinh` values (20,40,15,20,5,9);
 
-create view tongket_hocky as
+create or replace view tongket_hocky as
 select hs.MaHocSinh, hs.HoTen, 
 	COALESCE(round(avg((select kq.Diem where kq.LoaiDiem = 1)),1), 0) as diem15,
     COALESCE(round(avg((select kq.Diem where kq.LoaiDiem = 2)),1), 0) as diem45,
@@ -272,22 +273,22 @@ from ketqua kq left join hocsinh hs on kq.MaHS = hs.MaHocSinh left join monhoc m
 group by kq.MaHS, kq.MaMH, kq.HocKy, kq.NamHoc;
 
 
-create view diem_tb as
+create or replace view diem_tb as
 select MaHocSinh, MaLop, HocKy, NamHoc, round((Diem15 + Diem45 * 2 + giuaky * 2 + CuoiKy * 3) / 6, 1) as DiemTB, tenmh
 from tongket_hocky;
 
-create view tb_lop_mon as
+create or replace view tb_lop_mon as
 select kq.malop, kq.tenmh, l.siso, kq.hocky, kq.namhoc, count(*) as sldat, (count(*) / l.siso * 100) as tiledat
 from diem_tb kq left join lop l on l.MaLop = kq.MaLop
 where kq.diemtb >=5
 group by kq.malop, kq.tenmh, kq.namhoc, kq.hocky;
 
-create view tb_hocky as
+create or replace view tb_hocky as
 select MaHocSinh, MaLop, HocKy, NamHoc, avg(DiemTB) as tbhk
 from diem_tb
 group by MaHocSInh, MaLop, HocKy, NamHoc;
 
-create view tb_hocky_lop as
+create or replace view tb_hocky_lop as
 select kq.MaLop, l.SiSo, kq.HocKy, kq.NamHoc, count(*) as sdDat
 from tb_hocKy kq left join lop l on kq.MaLop = l.MaLop
 where tbhk >= 5
