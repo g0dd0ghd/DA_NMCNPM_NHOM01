@@ -99,7 +99,11 @@ $account = get_account_id($id);
               <td><input type="text" value=<?php echo $row['MatKhau'];?> /></td>
               <td><input type="text" value=<?php echo $row['MaActor'];?> /></td>
               <td>
-                <a href="#"><i class="fas fa-trash-alt"></i></a>
+                  <form method="post" action="delete_account.php">
+                        <input onclick="window.location = 'edit_account.php?id=<?php echo $row['MaNguoiDung']; ?>'" type="button" value="Sửa"/>
+                        <input type="hidden" name="id" value="<?php echo $row['MaNguoiDung']; ?>"/>
+                        <input onclick="return confirm('Bạn có chắc muốn xóa không?');" type="submit" name="delete" value="Xóa"/>
+                    </form>
               </td>
             </tr>
             <?php } ?>
