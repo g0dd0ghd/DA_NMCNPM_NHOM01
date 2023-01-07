@@ -28,7 +28,7 @@
                 if($row = mysqli_fetch_assoc($result)){
                     if($password !== $row['MatKhau']){
                         
-                        header("Location: ../login.html?error=wrongusernameorpassword");
+                        header("Location: ../login.html?error=wrongUsernameorpassword");
                         exit();
                     }
                     else{
@@ -45,10 +45,6 @@
                 }
             }
         }
-    }
-    else {
-        header("Location: ../login.html?error=accessforbidden");
-        exit();
     }
 
 ?>
