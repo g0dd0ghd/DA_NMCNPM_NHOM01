@@ -1,4 +1,10 @@
 <?php
+if (!isset($_SESSION['user_id'])) {
+  // Redirect the user to the login page
+  header('Location: ./login.html');
+  exit();
+}
+
 include_once('./includes/database.php');
 if (isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
   $l = $_GET['class'];

@@ -1,4 +1,10 @@
 <?php
+if (!isset($_SESSION['user_id'])) {
+  // Redirect the user to the login page
+  header('Location: ./login.html');
+  exit();
+}
+
 if (isset($_GET['class']) && $_GET['class'] != null){
   $l = $_GET['class'];
   

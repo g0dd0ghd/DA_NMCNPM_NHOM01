@@ -1,4 +1,9 @@
 <?php
+if (!isset($_SESSION['user_id'])) {
+  // Redirect the user to the login page
+  header('Location: ./login.html');
+  exit();
+}
 require_once "./includes/database.php";
 
 $query = "SELECT MaLop FROM lop ORDER BY MaLop DESC";
@@ -33,10 +38,7 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
     mysqli_stmt_bind_param($statement1,"ss",$class,$name);
     mysqli_stmt_execute($statement1);
     $result1 =mysqli_stmt_get_result($statement1);
-  }
-
-
-  
+  }  
 }
 
 

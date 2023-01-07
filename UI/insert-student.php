@@ -1,5 +1,10 @@
 <?php
-
+  if (!isset($_SESSION['user_id'])) {
+    // Redirect the user to the login page
+    header('Location: ./login.html');
+    exit();
+  }
+  
   if(isset($_POST['submit'])){
     require_once "includes/database.php";
 

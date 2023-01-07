@@ -1,4 +1,11 @@
 <?php
+
+if (!isset($_SESSION['user_id'])) {
+    // Redirect the user to the login page
+    header('Location: ./login.html');
+    exit();
+}
+
 include_once('./includes/database.php');
 if (isset($_POST['submit'])){
     $hs = $_POST['MaHS'];

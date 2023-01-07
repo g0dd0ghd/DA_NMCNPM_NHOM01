@@ -1,4 +1,10 @@
 <?php
+if (!isset($_SESSION['user_id'])) {
+  // Redirect the user to the login page
+  header('Location: ./login.html');
+  exit();
+}
+
 if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester'])){
   $m = $_GET['subject'];
   $l = $_GET['class'];

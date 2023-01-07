@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
     if(isset($_POST['submit'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -11,7 +11,7 @@
         }
         else{
             
-            $sql = "SELECT * FROM taikhoan WHERE MaNguoiDung = ?";
+            $sql = "SELECT * FROM taikhoan WHERE MaActor = ?";
             $statement = mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($statement, $sql)){
                 
@@ -32,9 +32,9 @@
                         exit();
                     }
                     else{
-                        session_start();
-                        #$_SESSION['sessionId'] = $result['id'];
-                        $_SESSION['sessionUser'] = $row['MaNguoiDung'];
+                        
+                        $_SESSION['role'] = $row['MaActor'];
+                        $_SESSION['user_id'] = $row['MaNguoiDung'];
                         header("Location: ../home-page.html");
                         exit();
                     }
