@@ -122,11 +122,7 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
               }
             ?>
           </select>
-          <tbody>
-            
-          </tbody>
-          </table>'
-          <input type="text" name="stuname" placeholder="Nhập tên học sinh cần tìm" class="item" id="search-input" />
+          <input type="text" name="stuname" placeholder="Nhập tên HS" class="item" id="search-input" />
           <button type="submit" name="submit" class="item" id="search-btn"><i class="fas fa-search"></i></button>
           </form>
         </div>
@@ -171,6 +167,7 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
                   </tr>
                 <?php endwhile;}?>
           </tbody>
+        </table>  
       </div>
       <!-- End Student List -->
     </div>
