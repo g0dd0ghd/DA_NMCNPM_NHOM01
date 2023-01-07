@@ -13,6 +13,7 @@ if (!$conn) {
     die("Database connection failed!");
 }
 
+//
 function getdata($query){
     $conn = mysqli_connect('localhost', 'root', '020902', 'quan_ly_hoc_sinh');
   
