@@ -52,8 +52,11 @@
     text-align: right;
 }
 
-#account-list .toolbar .button a
+#account-list .toolbar .button a,
+#account-list .account-tab td input[type="button"],
+#account-list .account-tab td input[type="submit"]
 {
+    margin: 2px 0;
     padding: 3px 10px;
     text-decoration: none;
     color: var(--primary);
