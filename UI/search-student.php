@@ -1,5 +1,7 @@
 <?php
-if (!isset($_SESSION['user_id'])) {
+session_start();
+if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
+  echo "Reach";
   // Redirect the user to the login page
   header('Location: ./login.html');
   exit();
@@ -144,7 +146,8 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
           <tbody>
             <?php
               $i = 1;
-              while($row = mysqli_fetch_array($result1)):
+              if(isset($result1)){
+                while($row = mysqli_fetch_array($result1)):
                 ?>
                   <tr>
                     <td><?php echo $i++;?></td>
@@ -157,7 +160,7 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
                     <td><?php echo $row['cuoiky'];?></td>
                     <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                   </tr>
-                <?php endwhile;?>
+                <?php endwhile;}?>
           </tbody>
       </div>
       <!-- End Student List -->

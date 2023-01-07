@@ -33,9 +33,10 @@
                     }
                     else{
                         
-                        $_SESSION['role'] = $row['MaActor'];
-                        $_SESSION['user_id'] = $row['MaNguoiDung'];
+                        $_SESSION['login'] = true;
+                        $_SESSION['user_id'] = $row['MaActor'];
                         header("Location: ../home-page.html");
+                        
                         exit();
                     }
                 }

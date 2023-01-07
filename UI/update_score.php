@@ -1,9 +1,11 @@
 <?php
 
-if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page
-    header('Location: ./login.html');
-    exit();
+session_start();
+if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
+  echo "Reach";
+  // Redirect the user to the login page
+  header('Location: ./login.html');
+  exit();
 }
 
 include_once('./includes/database.php');
