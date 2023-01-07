@@ -1,5 +1,5 @@
 drop DATABASE `Quan_ly_hoc_sinh`;
-CREATE OR REPLACE DATABASE `Quan_ly_hoc_sinh`;
+CREATE DATABASE `Quan_ly_hoc_sinh`;
 use `Quan_ly_hoc_sinh`;
 
 create table `TaiKhoan` (
@@ -185,6 +185,16 @@ insert into `hocsinh` values ('', 'Sora', 'nam', '2004-11-30', null, 'Tp.HCM', '
 insert into `hocsinh` values ('', 'Yamoto', 'nam', '2004-11-30', null, 'Tp.HCM', '22/101');
 insert into `hocsinh` values ('', 'Ayano', 'nữ', '2004-11-30', null, 'Tp.HCM', '22/101');
 
+update `lop` set SiSo = 3 where MaLop = '22/101';
+update `lop` set SiSo = 1 where MaLop = '22/102';
+update `lop` set SiSo = 1 where MaLop = '22/103';
+update `lop` set SiSo = 1 where MaLop = '22/104';
+update `lop` set SiSo = 1 where MaLop = '22/111';
+update `lop` set SiSo = 1 where MaLop = '22/112';
+update `lop` set SiSo = 1 where MaLop = '22/113';
+update `lop` set SiSo = 1 where MaLop = '22/121';
+update `lop` set SiSo = 1 where MaLop = '22/122';
+
 /*thêm giáo viên*/
 insert into `giaovien` values ('', 'Rebecca Hall', 'nữ', curdate(), null, 'Tp.HCM', '000002');
 insert into `giaovien` values ('', 'Damien Cameron', 'nam', curdate(), null, 'Tp.HCM', '000001');
@@ -236,6 +246,7 @@ insert into `taikhoan` values ('', 'Ryeo Youngsoo', '12345', 'GV0006');
 insert into `taikhoan` values ('', 'In Min-Jung', '12345', 'GV0007');
 insert into `taikhoan` values ('', 'U Chung-Cha', '12345', 'GV0008');
 insert into `taikhoan` values ('', 'Song Suk', '12345', 'GV0009');
+insert into `taikhoan` values ('', 'abcdef','12345','AD0001');
 
 /*thêm lớp-môn học*/
 insert into `lop-monhoc`values ('22/101', '000001', 'thứ 2 tiết 1-4');
@@ -272,7 +283,6 @@ select hs.MaHocSinh, hs.HoTen,
 from ketqua kq left join hocsinh hs on kq.MaHS = hs.MaHocSinh left join monhoc mh on mh.MaMonHoc = kq.MaMH
 group by kq.MaHS, kq.MaMH, kq.HocKy, kq.NamHoc;
 
-
 create or replace view diem_tb as
 select MaHocSinh, MaLop, HocKy, NamHoc, round((Diem15 + Diem45 * 2 + giuaky * 2 + CuoiKy * 3) / 6, 1) as DiemTB, tenmh
 from tongket_hocky;
@@ -289,7 +299,7 @@ from diem_tb
 group by MaHocSInh, MaLop, HocKy, NamHoc;
 
 create or replace view tb_hocky_lop as
-select kq.MaLop, l.SiSo, kq.HocKy, kq.NamHoc, count(*) as sdDat
+select kq.MaLop, l.SiSo, kq.HocKy, kq.NamHoc, count(*) as sldat, (count(*) / l.SiSo * 100) as tiledat
 from tb_hocKy kq left join lop l on kq.MaLop = l.MaLop
 where tbhk >= 5
 group by kq.MaLop, kq.HocKy, kq.NamHoc;
