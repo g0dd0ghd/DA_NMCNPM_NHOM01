@@ -92,9 +92,7 @@ $lop = getdata('select MaLop from lop;');
               <a href="./insert-student.php" class="item"><i class="fas fa-plus"></i> Thêm</a>
               <a href="#" class="item" id="edit-btn"><i class="fas fa-edit"></i> Sửa</a>
               <a href="#" class="item" id="save-btn"><i class="fas fa-save"></i> Lưu</a>
-            </div>
-            <div class="submit-btn">
-              <button name="submit" type="submit">Tìm kiếm</button> 
+              <button name="submit" type="submit"><i class="fas fa-clipboard-list"></i></button> 
             </div>
           </div>
           <table class="student-tab">
@@ -131,6 +129,9 @@ $lop = getdata('select MaLop from lop;');
               </tr>
             </tbody>
           </table>
+          
+      </form>
+          </div>
         </div>
       </form>
       <!-- End Student List -->

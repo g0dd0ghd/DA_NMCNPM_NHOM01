@@ -121,9 +121,7 @@ $lop = getdata('select MaLop from Lop;');
                 <option value=<?php echo $row['NamHoc']?>><?php echo $row['NamHoc']?></option>
               <?php endwhile;?>
             </select>
-            <div class="submit-btn">
-              <button name="submit" type="submit">Tìm kiếm</button> 
-            </div>
+            <button name="submit" type="submit">Tìm kiếm</button> 
           </div>
           <table class="summary-tab">
             <thead>

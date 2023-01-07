@@ -111,8 +111,8 @@ $lop = getdata('select distinct(MaLop) from tongket_hocky;');
               <option selected="selected" value="1">HKI</option>
               <option value="2">HKII</option>
             </select>
-            <div class="submit-btn">
-              <button name="submit" type="submit">Tìm kiếm</button> 
+            <div class="button">
+            <button name="submit" type="submit"><i class="fas fa-clipboard-list"></i></button> 
             </div>
           </div>
           <table class="student-tab">

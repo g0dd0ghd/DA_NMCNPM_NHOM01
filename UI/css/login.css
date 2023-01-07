@@ -76,9 +76,10 @@ body {
     padding: 4px 25px;
 }
 
-.submit-btn a
+.submit-btn button
 {
-    text-decoration: none;
+    border: none;
+    background-color: #1975bd;
     color: white;
 }
 

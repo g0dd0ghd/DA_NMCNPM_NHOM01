@@ -62,17 +62,21 @@
     text-align: right;
 }
 
-#student-list .toolbar .button a
+#student-list .toolbar .button a,
+#student-list .toolbar .button button
 {
     padding: 3px 10px;
     text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
     color: var(--primary);
     border: 1px solid var(--primary);
     cursor: pointer;
     transition: all 0.3s;
 }
 
-#student-list .toolbar .button a:hover
+#student-list .toolbar .button a:hover,
+#student-list .toolbar .button button:hover
 {
     background: var(--primary);
     color: var(--light);
@@ -81,6 +85,16 @@
 #student-list .toolbar .button #save-btn
 {
     display: none;
+}
+
+#student-list .overlay
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 #student-list .student-tab {
