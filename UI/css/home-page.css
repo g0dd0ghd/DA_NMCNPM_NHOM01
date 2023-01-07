@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 700px;
 }
 
 #description .introduction .edu-logo {
@@ -119,5 +119,30 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    #description .feature .item-icon
+    {
+        width: 50px;
+        height: 50px;
+    }
+
+    #description .feature .text-feature {
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    #header,
+    #footer
+    {
+        font-size: 10px;
+    }
+
+    #description .text-heading
+    {
+        font-size: 30px;
     }
 }
