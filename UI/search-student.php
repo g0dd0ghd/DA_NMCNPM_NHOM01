@@ -28,7 +28,7 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
   $name = $_POST["stuname"];
   
 
-  $search_query = "SELECT * FROM tongket_hocky where MaLop=? AND HoTen LIKE ?";
+  $search_query = "SELECT x.MaHocSinh,x.HoTen,x.diem15,x.diem45,x.giuaky,x.cuoiky,x.tenmh,x.NamHoc,x.HocKy,x.MaLop,y.DiemTB FROM tongket_hocky x, diem_tb y where x.MaLop=? AND x.HoTen LIKE ? and x.MaHocSinh=y.MaHocSinh";
   $statement1 = mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($statement1, $search_query)){
@@ -137,10 +137,15 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
               <th>Mã số HS</th>
               <th>Họ và Tên</th>
               <th>Lớp</th>
+              <th>Học kỳ</th>
+              <th>Năm học</th>
+              <th>Môn học</th>
               <th>Điểm 15 phút</th>
               <th>Điểm 45 phút</th>
               <th>Điểm giữa kỳ</th>
               <th>Điểm cuối kỳ</th>
+              <th>Điểm trung bình</th>
+              <th>
             </tr>
           </thead>
           <tbody>
@@ -154,10 +159,14 @@ if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
                     <td><?php echo $row['MaHocSinh'];?></td>
                     <td><?php echo $row['HoTen'];?></td>
                     <td><?php echo $row['MaLop']?></td>
+                    <td><?php echo $row['HocKy']?></td>
+                    <td><?php echo $row['NamHoc']?></td>
+                    <td><?php echo $row['tenmh']?></td>
                     <td><?php echo $row['diem15'];?></td>
                     <td><?php echo $row['diem45'];?></td>
                     <td><?php echo $row['giuaky'];?></td>
                     <td><?php echo $row['cuoiky'];?></td>
+                    <td><?php echo $row['DiemTB']?></td>
                     <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                   </tr>
                 <?php endwhile;}?>

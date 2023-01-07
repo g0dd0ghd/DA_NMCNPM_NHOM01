@@ -7,28 +7,36 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
   exit();
 }
 
-if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester'])){
-  $m = $_GET['subject'];
-  $l = $_GET['class'];
-  $s = $_GET['semester'];
-  $query = "select * from tongket_hocky where";
-  if ($m != null){
-    $query = $query . " tenmh = '${m}' and";
+if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+  if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester'])){
+    $m = $_GET['subject'];
+    $l = $_GET['class'];
+    $s = $_GET['semester'];
+    $query = "select * from tongket_hocky where";
+    if ($m != null){
+      $query = $query . " tenmh = '${m}' and";
+    }
+    if ($l != null){
+      $query = $query . " MaLop = '${l}' and";
+    }
+    $query = $query . " HocKy = ${s}";
   }
-  if ($l != null){
-    $query = $query . " MaLop = '${l}' and";
+  else {
+    $query = "select * from tongket_hocky";
   }
-  $query = $query . " HocKy = ${s}";
+  
+  include_once('./includes/database.php');
+  
+  $data = getdata($query);
+  $monhoc = getdata('select distinct(tenmh) from tongket_hocky');
+  $lop = getdata('select distinct(MaLop) from tongket_hocky;');
 }
-else {
-  $query = "select * from tongket_hocky";
+else{
+  echo "<script>alert('You cannot access this site.');</script>";
+  echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+  exit;
 }
 
-include_once('./includes/database.php');
-
-$data = getdata($query);
-$monhoc = getdata('select distinct(tenmh) from tongket_hocky');
-$lop = getdata('select distinct(MaLop) from tongket_hocky;');
 
 ?>
 

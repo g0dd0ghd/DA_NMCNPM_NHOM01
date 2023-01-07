@@ -9,51 +9,59 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
 }
 
 include_once('./includes/database.php');
-if (isset($_POST['submit'])){
-    $hs = $_POST['MaHS'];
-    $hk = $_POST['HocKy'];
-    $nh = $_POST['NamHoc'];
-    $m = $_POST['MaMH'];
-    $diem15 = $_POST['diem15'];
-    $diem45 = $_POST['diem45'];
-    $giuaky = $_POST['giuaky'];
-    $cuoiky = $_POST['cuoiky'];
-
-    if ($diem15 >= 0 && $diem15 <= 10){
-
-        $sql1 = "replace into `ketqua` values ('${hs}', '${m}', 1, ${diem15}, ${hk}, ${nh})";
-        mysqli_query($conn, $sql1);
-    }
-
-    if ($diem45 >= 0 && $diem45 <= 10){
-
-        $sql2 = "replace into `ketqua` values ('${hs}', '${m}', 2, ${diem45}, ${hk}, ${nh})";
-        mysqli_query($conn, $sql2);
-    }
-
-    if ($giuaky >= 0 && $giuaky <= 10){
-
-        $sql3 = "replace into `ketqua` values ('${hs}', '${m}', 3, ${giuaky}, ${hk}, ${nh})";
-        mysqli_query($conn, $sql3);
+if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+    if (isset($_POST['submit'])){
+        $hs = $_POST['MaHS'];
+        $hk = $_POST['HocKy'];
+        $nh = $_POST['NamHoc'];
+        $m = $_POST['MaMH'];
+        $diem15 = $_POST['diem15'];
+        $diem45 = $_POST['diem45'];
+        $giuaky = $_POST['giuaky'];
+        $cuoiky = $_POST['cuoiky'];
+    
+        if ($diem15 >= 0 && $diem15 <= 10){
+    
+            $sql1 = "replace into `ketqua` values ('${hs}', '${m}', 1, ${diem15}, ${hk}, ${nh})";
+            mysqli_query($conn, $sql1);
+        }
+    
+        if ($diem45 >= 0 && $diem45 <= 10){
+    
+            $sql2 = "replace into `ketqua` values ('${hs}', '${m}', 2, ${diem45}, ${hk}, ${nh})";
+            mysqli_query($conn, $sql2);
+        }
+    
+        if ($giuaky >= 0 && $giuaky <= 10){
+    
+            $sql3 = "replace into `ketqua` values ('${hs}', '${m}', 3, ${giuaky}, ${hk}, ${nh})";
+            mysqli_query($conn, $sql3);
+        }
+        
+        if ($cuoiky >= 0 && $cuoiky <= 10){
+    
+            $sql4 = "replace into `ketqua` values ('${hs}', '${m}', 4, ${cuoiky}, ${hk}, ${nh})";
+            mysqli_query($conn, $sql4);
+        }
+    
+        header('location:score-sheet.php');
     }
     
-    if ($cuoiky >= 0 && $cuoiky <= 10){
-
-        $sql4 = "replace into `ketqua` values ('${hs}', '${m}', 4, ${cuoiky}, ${hk}, ${nh})";
-        mysqli_query($conn, $sql4);
-    }
-
-    header('location:score-sheet.php');
+    $MaHS = $_GET['MaHS'];
+    $MaMH = $_GET['MaMH'];
+    $HocKy = $_GET['HocKy'];
+    $NamHoc = $_GET['NamHoc'];
+    $diem15 = $_GET['diem15'];
+    $diem45 = $_GET['diem45'];
+    $giuaky = $_GET['giuaky'];
+    $cuoiky = $_GET['cuoiky'];
+}
+else{
+    echo "<script>alert('You cannot access this site.');</script>";
+    echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+    exit;
 }
 
-$MaHS = $_GET['MaHS'];
-$MaMH = $_GET['MaMH'];
-$HocKy = $_GET['HocKy'];
-$NamHoc = $_GET['NamHoc'];
-$diem15 = $_GET['diem15'];
-$diem45 = $_GET['diem45'];
-$giuaky = $_GET['giuaky'];
-$cuoiky = $_GET['cuoiky'];
 
 ?>
 

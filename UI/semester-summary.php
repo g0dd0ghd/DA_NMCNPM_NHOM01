@@ -6,28 +6,36 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
   header('Location: ./login.html');
   exit();
 }
-include_once('./includes/database.php');
-if (isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
-  $l = $_GET['class'];
-  $s = $_GET['semester'];
-  $y = $_GET['year'];
-  $query = "select * from tb_hocky_lop where";
-  if ($l != null){
-    $query = $query . " MaLop = '${l}' and";
+if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+
+  include_once('./includes/database.php');
+  if (isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
+    $l = $_GET['class'];
+    $s = $_GET['semester'];
+    $y = $_GET['year'];
+    $query = "select * from tb_hocky_lop where";
+    if ($l != null){
+      $query = $query . " MaLop = '${l}' and";
+    }
+    if ($y != null){
+      $query = $query . " NamHoc = ${y} and";
+    }
+    $query = $query . " HocKy = ${s}";
   }
-  if ($y != null){
-    $query = $query . " NamHoc = ${y} and";
+  else {
+    $query = "select * from tb_hocky_lop";
   }
-  $query = $query . " HocKy = ${s}";
-}
-else {
-  $query = "select * from tb_hocky_lop";
-}
 
 
-$data = getdata($query);
-$namhoc = getdata('select distinct(NamHoc) from tb_hocky_lop;');
-$lop = getdata('select MaLop from Lop;');
+  $data = getdata($query);
+  $namhoc = getdata('select distinct(NamHoc) from tb_hocky_lop;');
+  $lop = getdata('select MaLop from Lop;');
+}
+else{
+  echo "<script>alert('You cannot access this site.');</script>";
+  echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+  exit;
+}
 
 ?>
 

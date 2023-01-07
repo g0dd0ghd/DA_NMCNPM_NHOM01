@@ -1,39 +1,46 @@
 <?php
 session_start();
 if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
-  echo "Reach";
   // Redirect the user to the login page
   header('Location: ./login.html');
   exit();
 }
 
 include_once('./includes/database.php');
-if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
-  $m = $_GET['subject'];
-  $l = $_GET['class'];
-  $s = $_GET['semester'];
-  $y = $_GET['year'];
-  $query = "select * from tb_lop_mon where";
-  if ($m != null){
-    $query = $query . " tenmh = '${m}' and";
+if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+  if (isset($_GET['subject']) && isset($_GET['class']) && isset($_GET['semester']) && isset($_GET['year'])){
+    $m = $_GET['subject'];
+    $l = $_GET['class'];
+    $s = $_GET['semester'];
+    $y = $_GET['year'];
+    $query = "select * from tb_lop_mon where";
+    if ($m != null){
+      $query = $query . " tenmh = '${m}' and";
+    }
+    if ($l != null){
+      $query = $query . " MaLop = '${l}' and";
+    }
+    if ($y != null){
+      $query = $query . " NamHoc = ${y} and";
+    }
+    $query = $query . " HocKy = ${s}";
   }
-  if ($l != null){
-    $query = $query . " MaLop = '${l}' and";
+  else {
+    $query = "select * from tb_lop_mon";
   }
-  if ($y != null){
-    $query = $query . " NamHoc = ${y} and";
-  }
-  $query = $query . " HocKy = ${s}";
+  
+  
+  $data = getdata($query);
+  $monhoc = getdata('select TenMonHoc as tenmh from MonHoc;');
+  $namhoc = getdata('select distinct(NamHoc) from tb_lop_mon;');
+  $lop = getdata('select MaLop from Lop;');
 }
-else {
-  $query = "select * from tb_lop_mon";
+else{
+  echo "<script>alert('You cannot access this site.');</script>";
+  echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+  exit;
 }
 
-
-$data = getdata($query);
-$monhoc = getdata('select TenMonHoc as tenmh from MonHoc;');
-$namhoc = getdata('select distinct(NamHoc) from tb_lop_mon;');
-$lop = getdata('select MaLop from Lop;');
 
 ?>
 
