@@ -1,35 +1,54 @@
 <?php
   session_start();
   if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
-    echo "Reach";
+   
     // Redirect the user to the login page
     header('Location: ./login.html');
     exit();
   }
   
   if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+    require_once "includes/database.php";
+    $query = "SELECT MaLop FROM lop ORDER BY MaLop DESC";
+    $statement = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($statement, $query)){
+                    
+      header("Location: ./search-student.php?error");
+      exit();
+    }
+    else{
+      mysqli_stmt_execute($statement);
+      $result = mysqli_stmt_get_result($statement);
+    }
+
     if(isset($_POST['submit'])){
-      require_once "includes/database.php";
+      
   
       $stuname = $_POST['stuname'];
-      $stuphonenum = $_POST['stuphonenum'];
+      $stuemail = $_POST['stuemail'];
       $stuaddress = $_POST['stuaddress'];
       $stubday = $_POST['stubday'];
       $stugender = $_POST['stugender'];
       $stuclass = $_POST['stuclass'];
-  
+      
+      if(!$stuname || !$stuemail ||!$stuaddress || !$stubday || !$stugender || !$stuclass){
+        echo "<script>alert('Không được để trống');</script>";
+        echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+        exit;   
+      }
       $sql = "INSERT INTO hocsinh (HoTen,GioiTinh,NgaySinh,Email,DiaChi,MaLop) values(?,?,?,?,?,?)";
   
       $statement = mysqli_stmt_init($conn);
       if(!mysqli_stmt_prepare($statement, $sql)){
-          
           header("Location: ./insert-student.php?error");
           exit();
       }
       else{      
-        mysqli_stmt_bind_param($statement, "ssssss", $stuname,$stugender,$stubday,$stuphonenum,$stuaddress,$stuclass);
+        mysqli_stmt_bind_param($statement, "ssssss", $stuname,$stugender,$stubday,$stuemail,$stuaddress,$stuclass);
         mysqli_stmt_execute($statement);
-        header("Location ./insert-student.php");
+        echo "<script>alert('Thêm thành công!');</script>";
+        echo "<script>window.location = 'javascript:history.go(-1);';</script>";
         exit();
       }
     }
@@ -117,8 +136,8 @@
               <input type="text" name="stuname" id="student-name" placeholder="Họ và tên" />
             </div>
             <div class="item">
-              <label for="student-phonenum">Số điện thoại:</label>
-              <input type="text" name="stuphonenum" id="student-phonenum" placeholder="Số điện thoại" />
+              <label for="student-phonenum">Email:</label>
+              <input type="text" name="stuemail" id="student-email" placeholder="Email" />
             </div>
             <div class="item">
               <label for="student-address">Địa chỉ:</label>
@@ -138,10 +157,18 @@
               </div>
               <div class="sub-item">
                 <label for="student-class">Lớp:</label>
-                <input type="text" name="stuclass" id="student-class" placeholder="Lớp" />
+                <select id="student-class" name="stuclass">
+                  <option value=""></option>
+                  <?php
+                    while($row = mysqli_fetch_array($result)){
+                      echo "<option value='".$row['MaLop']."'>".$row['MaLop']."</option>";
+                    }
+                  ?>
+                </select>
               </div>
             </div>
-            <button type="submit" name="submit" class="button save-btn" onclick="javascript:alert('Đã lưu thông tin!')"><h4><i class="fas fa-save"></i> Lưu</h4></button>
+            
+            <button type="submit" name="submit" class="button save-btn" ><h4><i class="fas fa-save"></i> Lưu</h4></button>
               
           </div>
         </form>
