@@ -6,14 +6,39 @@ $statement = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($statement, $query)){
                 
-  header("Location: ../login.html?error");
+  header("Location: ./search-student.php?error");
   exit();
 }
 else{
   mysqli_stmt_execute($statement);
   $result = mysqli_stmt_get_result($statement);
-
 }
+
+
+if(isset($_POST["submit"]) && $_POST['stuclass'] != null){
+  echo "reach";
+  $class = $_POST["stuclass"];
+  $name = $_POST["stuname"];
+  
+
+  $search_query = "SELECT * FROM tongket_hocky where MaLop=? AND HoTen LIKE ?";
+  $statement1 = mysqli_stmt_init($conn);
+
+  if(!mysqli_stmt_prepare($statement1, $search_query)){
+    header("Location: ./search-student.php?error");
+    exit();
+  }
+  else{
+    $name = '%'.$name.'%';
+    mysqli_stmt_bind_param($statement1,"ss",$class,$name);
+    mysqli_stmt_execute($statement1);
+    $result1 =mysqli_stmt_get_result($statement1);
+  }
+
+
+  
+}
+
 
 ?>
 
@@ -83,17 +108,23 @@ else{
       <div id="student-list">
         <p>Tra cứu học sinh</p>
         <div class="toolbar">
+          <form method="post">
           <label for="class" class="item">Chọn lớp: </label>
-          <select id="class" class="item" name="categories">
-            <option value="null"></option>
+          <select id="class" class="item" name="stuclass">
+            <option value=""></option>
             <?php
               while($row = mysqli_fetch_array($result)){
                 echo "<option value='".$row['MaLop']."'>".$row['MaLop']."</option>";
               }
             ?>
           </select>
-          <input type="text" placeholder="Tìm kiếm" class="item" id="search-input" />
-          <a href="#" class="item" id="search-btn"><i class="fas fa-search"></i></a>
+          <tbody>
+            
+          </tbody>
+          </table>'
+          <input type="text" name="stuname" placeholder="Nhập tên học sinh cần tìm" class="item" id="search-input" />
+          <button type="submit" name="submit" class="item" id="search-btn"><i class="fas fa-search"></i></button>
+          </form>
         </div>
         <table class="student-tab">
           <thead>
@@ -102,32 +133,30 @@ else{
               <th>Mã số HS</th>
               <th>Họ và Tên</th>
               <th>Lớp</th>
-              <th>Điểm TB HKI</th>
-              <th>Điểm TB HKII</th>
-              <th>Trung bình tổng</th>
+              <th>Điểm 15 phút</th>
+              <th>Điểm 45 phút</th>
+              <th>Điểm giữa kỳ</th>
+              <th>Điểm cuối kỳ</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>220001</td>
-              <td>Nguyễn Văn A</td>
-              <td>10A1</td>
-              <td>9.0</td>
-              <td>10</td>
-              <td>9.7</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>220002</td>
-              <td>Nguyễn Văn B</td>
-              <td>10A1</td>
-              <td>8.0</td>
-              <td>9.5</td>
-              <td>9.0</td>
-            </tr>
+            <?php
+              $i = 1;
+              while($row = mysqli_fetch_array($result1)):
+                ?>
+                  <tr>
+                    <td><?php echo $i++;?></td>
+                    <td><?php echo $row['MaHocSinh'];?></td>
+                    <td><?php echo $row['HoTen'];?></td>
+                    <td><?php echo $row['MaLop']?></td>
+                    <td><?php echo $row['diem15'];?></td>
+                    <td><?php echo $row['diem45'];?></td>
+                    <td><?php echo $row['giuaky'];?></td>
+                    <td><?php echo $row['cuoiky'];?></td>
+                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                  </tr>
+                <?php endwhile;?>
           </tbody>
-        </table>
       </div>
       <!-- End Student List -->
     </div>
@@ -143,3 +172,8 @@ else{
     </script>
   </body>
 </html>
+
+
+<?php
+
+?>

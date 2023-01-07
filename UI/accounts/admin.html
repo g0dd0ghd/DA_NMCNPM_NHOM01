@@ -27,10 +27,10 @@
           <li>
             <a href="#"><i class="fas fa-book-open"></i> Lớp học</a>
             <ul class="subnav">
-              <li><a href="../search-student.html">Tra cứu HS</a></li>
-              <li><a href="../student-list.html">Xem DS lớp</a></li>
-              <li><a href="../insert-student.html">Tiếp nhận HS</a></li>
-              <li><a href="../score-sheet.html">Bảng điểm</a></li>
+              <li><a href="../search-student.php">Tra cứu HS</a></li>
+              <li><a href="../student-list.php">Xem DS lớp</a></li>
+              <li><a href="../insert-student.php">Tiếp nhận HS</a></li>
+              <li><a href="../score-sheet.php">Bảng điểm</a></li>
             </ul>
           </li>
           <li>
