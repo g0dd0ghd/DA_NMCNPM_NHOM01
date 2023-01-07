@@ -111,7 +111,7 @@ $lop = getdata('select MaLop from lop;');
                 <th>Họ và Tên</th>
                 <th>Giới tính</th>
                 <th>Ngày sinh</th>
-                <th>Email</th>
+                <th>SĐT</th>
                 <th class="address">Địa chỉ</th>
                 <th>Lớp</th>
                 <th></th>
