@@ -7,31 +7,39 @@
     exit();
   }
   
-  if(isset($_POST['submit'])){
-    require_once "includes/database.php";
-
-    $stuname = $_POST['stuname'];
-    $stuphonenum = $_POST['stuphonenum'];
-    $stuaddress = $_POST['stuaddress'];
-    $stubday = $_POST['stubday'];
-    $stugender = $_POST['stugender'];
-    $stuclass = $_POST['stuclass'];
-
-    $sql = "INSERT INTO hocsinh (HoTen,GioiTinh,NgaySinh,Email,DiaChi,MaLop) values(?,?,?,?,?,?)";
-
-    $statement = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($statement, $sql)){
-        
-        header("Location: ./insert-student.php?error");
+  if(isset($_SESSION['user_id']) && (substr($_SESSION['user_id'], 0,2)==='AD' or substr($_SESSION['user_id'], 0,2)==='GV')){
+    if(isset($_POST['submit'])){
+      require_once "includes/database.php";
+  
+      $stuname = $_POST['stuname'];
+      $stuphonenum = $_POST['stuphonenum'];
+      $stuaddress = $_POST['stuaddress'];
+      $stubday = $_POST['stubday'];
+      $stugender = $_POST['stugender'];
+      $stuclass = $_POST['stuclass'];
+  
+      $sql = "INSERT INTO hocsinh (HoTen,GioiTinh,NgaySinh,Email,DiaChi,MaLop) values(?,?,?,?,?,?)";
+  
+      $statement = mysqli_stmt_init($conn);
+      if(!mysqli_stmt_prepare($statement, $sql)){
+          
+          header("Location: ./insert-student.php?error");
+          exit();
+      }
+      else{      
+        mysqli_stmt_bind_param($statement, "ssssss", $stuname,$stugender,$stubday,$stuphonenum,$stuaddress,$stuclass);
+        mysqli_stmt_execute($statement);
+        header("Location ./insert-student.php");
         exit();
-    }
-    else{      
-      mysqli_stmt_bind_param($statement, "ssssss", $stuname,$stugender,$stubday,$stuphonenum,$stuaddress,$stuclass);
-      mysqli_stmt_execute($statement);
-      header("Location ./insert-student.php");
-      exit();
+      }
     }
   }
+  else{
+    echo "<script>alert('You cannot access this site.');</script>";
+    echo "<script>window.location = 'javascript:history.go(-1);';</script>";
+    exit;
+  }
+  
 ?>
 
 <!DOCTYPE html>
