@@ -126,6 +126,7 @@ $lop = getdata('select distinct(MaLop) from tongket_hocky;');
                 <th>Điểm một tiết</th>
                 <th>Điểm giữa kỳ</th>
                 <th>Điểm cuối HK</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody>
@@ -142,8 +143,8 @@ $lop = getdata('select distinct(MaLop) from tongket_hocky;');
                   <td><?php echo $row['diem45'];?></td>
                   <td><?php echo $row['giuaky'];?></td>
                   <td><?php echo $row['cuoiky'];?></td>
-                  <td><button type="submit"><a href=<?php
-                   echo './update_score.php?MaHS='.$row['MaHocSinh'].'&MaMH='.$row['MaMH'].'&HocKy='.$row['HocKy'].'&NamHoc='.$row['NamHoc'].'&diem15='.$row['diem15'].'&diem45='.$row['diem45'].'&giuaky='.$row['giuaky'].'&cuoiky='.$row['cuoiky']?>>Update</a></button>
+                  <td><button type="submit" class="submit-btn"><a href=<?php
+                   echo './update_score.php?MaHS='.$row['MaHocSinh'].'&MaMH='.$row['MaMH'].'&HocKy='.$row['HocKy'].'&NamHoc='.$row['NamHoc'].'&diem15='.$row['diem15'].'&diem45='.$row['diem45'].'&giuaky='.$row['giuaky'].'&cuoiky='.$row['cuoiky']?>>Sửa</a></button>
                 </tr>
                 <?php endwhile;?>
             </tbody>

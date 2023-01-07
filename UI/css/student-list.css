@@ -124,6 +124,14 @@
     color: var(--purple);
 }
 
+#student-list .student-tab tr .submit-btn
+{
+    margin: 2px 0;
+    border: 1px solid var(--primary);
+    font-weight: bold;
+    padding: 3px 8px;
+}
+
 #student-list .student-tab a
 {
     text-decoration: none;
