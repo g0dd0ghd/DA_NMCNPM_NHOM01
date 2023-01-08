@@ -247,6 +247,7 @@ insert into `taikhoan` values ('', 'In Min-Jung', '12345', 'GV0007');
 insert into `taikhoan` values ('', 'U Chung-Cha', '12345', 'GV0008');
 insert into `taikhoan` values ('', 'Song Suk', '12345', 'GV0009');
 insert into `taikhoan` values ('', 'abcdef','12345','AD0001');
+insert into `taikhoan` values ('', 'NoName','12345','AD0002');
 
 /*thêm lớp-môn học*/
 insert into `lop-monhoc`values ('22/101', '000001', 'thứ 2 tiết 1-4');
