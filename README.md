@@ -17,14 +17,14 @@
 - Hệ điều hành Windows 10, Windows 11, Linux
 - Database: MySQL
 
-#Các chức năng hoàn thành:
+# Các chức năng hoàn thành:
 - Tiếp nhận học sinh
 - Xem danh sách lớp
 - Tra cứu học sinh
 - Chỉnh sửa bảng điểm môn
 - Xem báo cáo tổng kết môn, tổng kết học kì
 - Quản lý tài khoản
-Các chức năng cần làm thêm:
+# Các chức năng cần làm thêm:
 - Xuất báo cáo ra file
 - Quản lý quy định chung
 - Tối ưu trải nghiệm người dùng 
